@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".activities.Organizer.SendActivity">
+
+    <RelativeLayout
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#4472C4">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:onClick="BackPress"
+            android:src="@drawable/back_arrow"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="22dp"
+            android:layout_toRightOf="@+id/icon"
+            android:fontFamily="@font/poppins_bold"
+            android:paddingTop="4dp"
+            android:text="App Info"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:layout_toRightOf="@+id/icon"
+                android:fontFamily="@font/playfair_display_regular"
+                android:gravity="center"
+
+                android:paddingTop="4dp"
+                android:text="App Info"
+                android:textColor="@color/black"
+                android:textSize="28dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="15dp"
+                android:layout_toRightOf="@+id/icon"
+                android:fontFamily="@font/poppins_regular"
+                android:justificationMode="inter_word"
+                android:paddingTop="4dp"
+                android:text="The Odyssea Mauritius is a travel guide app that helps you plan your trip and tour Mauritius for a better travel experience. Explore the history, life, and culture of the city stress free with this app. The app is free to download. Optional premium features or additional content are offered as in-app purchase."
+                android:textColor="#5C5C5C"
+                android:textSize="14dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+
+                android:layout_toRightOf="@+id/icon"
+                android:fontFamily="@font/playfair_display_regular"
+                android:gravity="center"
+
+                android:paddingTop="4dp"
+                android:text="Copyright &amp; Disclaimer"
+                android:textColor="@color/black"
+                android:textSize="22dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="15dp"
+                android:layout_toRightOf="@+id/icon"
+                android:fontFamily="@font/poppins_regular"
+                android:justificationMode="inter_word"
+                android:paddingTop="4dp"
+                android:text="We are doing our best to prepare the content of this app. To the extent permitted by the law, Odyssea shall not be responsible for any losses and/or damages due to the usage of the information on our app. By using our app, you hereby consent to our disclaimer and agree to its terms."
+                android:textColor="#5C5C5C"
+                android:textSize="14dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_toRightOf="@+id/icon"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:paddingTop="4dp"
+                    android:text="1"
+                    android:textColor="#5C5C5C"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_toRightOf="@+id/icon"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:paddingTop="4dp"
+                    android:text="The app is provided “as is”, without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages, or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the app or the use or other dealings in the app."
+                    android:textColor="#5C5C5C"
+                    android:textSize="14dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_toRightOf="@+id/icon"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:paddingTop="4dp"
+                    android:text="2"
+                    android:textColor="#5C5C5C"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_toRightOf="@+id/icon"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:paddingTop="4dp"
+                    android:text="The images appearing on this app are all licensed from 123rf.com and are copyrighted. Duplication, processing, distribution, manipulated or any form of commercialization of such material shall require the prior written consent of 123rf. Use of this app constitutes acceptance with the above copyright notice and all terms and conditions presented here."
+                    android:textColor="#5C5C5C"
+                    android:textSize="14dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_toRightOf="@+id/icon"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:paddingTop="4dp"
+                    android:text="3"
+                    android:textColor="#5C5C5C"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_toRightOf="@+id/icon"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:paddingTop="4dp"
+                    android:text="Any links contained in our app may lead to external sites are provided for convenience only. Any information or statements that appeared in these sites are not sponsored, endorsed, or otherwise approved by Odyssea. For these external sites, Odyssea cannot be held liable for the availability of, or the content located on or through it. Plus, any losses or damages occurred from using these contents or the internet generally."
+                    android:textColor="#5C5C5C"
+                    android:textSize="14dp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

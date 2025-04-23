@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+
+    android:layout_height="16dp"
+    android:background="#BDD7EE"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="4dp"
+        android:layout_height="16dp"
+        android:background="#1B90FF" />
+
+    <TextView
+        android:id="@+id/event_name"
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/bg_stroke_event"
+        android:fontFamily="@font/latomedium"
+        android:maxLines="1"
+        android:padding="1dp"
+        android:text="@string/app_name"
+        android:textColor="#000"
+        android:textSize="8sp" />
+
+</RelativeLayout>

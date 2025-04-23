@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="12dp"
+    android:layout_marginTop="12dp"
+    android:layout_marginEnd="12dp"
+    android:layout_weight="1"
+    android:background="@drawable/img_bg"
+    android:orientation="vertical">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/main_lyt"
+    >
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:padding="1dp"
+        android:scaleType="fitXY" />
+
+    <RelativeLayout
+        android:id="@+id/lyt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="East"
+            android:textColor="#000"
+            android:textSize="14dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="5dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/add"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="4mm"
+                    android:padding="2dp"
+                    android:src="@drawable/add"
+                    app:tint="#5c79ff" />
+
+                <ImageView
+                    android:id="@+id/remove"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="4mm"
+                    android:padding="2dp"
+                    android:src="@drawable/minus"
+                    app:tint="#5c79ff" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/map"
+                    android:layout_width="24dp"
+
+                    android:layout_height="24dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/map_location"
+                    app:tint="#5c79ff" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_lyt"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/weather_icon"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+
+            android:layout_marginStart="15dp"
+            android:tint="#4B808080" />
+
+        <TextView
+            android:id="@+id/temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="16dp"
+            android:layout_toRightOf="@+id/weather_icon"
+            android:fontFamily="@font/poppins_regular"
+            android:shadowColor="@color/white"
+            android:textColor="#000"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/condition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/temp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="-2dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toRightOf="@+id/weather_icon"
+            android:fontFamily="@font/poppins_light"
+            android:shadowColor="@color/white"
+            android:textColor="#858585"
+            android:textSize="11dp" />
+
+        <me.zhanghai.android.materialratingbar.MaterialRatingBar
+            android:id="@+id/ratingbar"
+            android:layout_width="100dp"
+            android:layout_height="26dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="12dp"
+            android:indeterminateTint="@color/app_color"
+            android:isIndicator="true"
+            app:backgroundTint="@color/app_color"
+            app:mrb_fillBackgroundStars="true"
+            app:mrb_progressBackgroundTint="#C5C5C5"
+            app:mrb_progressTint="@color/app_color" />
+
+        <TextView
+            android:id="@+id/count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ratingbar"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="5dp"
+
+            android:fontFamily="@font/poppins_regular"
+            android:shadowColor="@color/white"
+            android:shadowRadius="@integer/material_motion_duration_long_2"
+            android:textColor="#000"
+            android:textSize="12dp" />
+
+    </RelativeLayout>
+</RelativeLayout>
+

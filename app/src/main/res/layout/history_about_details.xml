@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".activities.Explore.ExploreActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="#4472C4">
+
+            <ImageView
+                android:id="@+id/main_img"
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:onClick="BackPress"
+                android:src="@drawable/back_arrow"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/beach_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="22dp"
+                android:layout_marginEnd="20dp"
+                android:layout_toLeftOf="@+id/menu"
+                android:layout_toRightOf="@id/main_img"
+                android:fontFamily="@font/poppins_bold"
+                android:maxLines="1"
+                android:paddingTop="4dp"
+                android:text="History"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+
+            <ImageView
+                android:id="@+id/menu"
+                android:layout_width="24dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
+                android:onClick="menu"
+                android:src="@drawable/menu"
+                app:tint="@color/white" />
+
+            <ImageView
+                android:id="@+id/closebtn"
+                android:layout_width="24dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/close"
+                android:visibility="gone"
+                app:tint="@color/white" />
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/mauritius_history"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="32dp"
+
+                    android:layout_marginRight="22dp"
+                    android:layout_marginBottom="23dp" />
+
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:text="The island of Mauritius was uninhabited before its first recorded visit by Arab sailors in the end of the 10th century. Its name Dina Arobi has been associated with Arab sailors who first discovered the island. \n\nThe Treaty of Tordesillas purported to give the Kingdom of Portugal the right to colonise this part of the world. In 1507, Portuguese sailors came to the uninhabited island and established a visiting base. Diogo Fernandes Pereira, a Portuguese navigator, was the first European known to land in Mauritius. He named the island Ilha do Cisne (Island of the Swan). The Portuguese did not stay long as they were not interested in these islands. The Mascarene Islands were named after Pedro Mascarenhas, Viceroy of Portuguese India, after his visit to the islands in 1512. Rodrigues Island was named after Portuguese explorer Diogo Rodrigues, who first came upon the island in 1528. \n\nIn 1598, a Dutch squadron under Admiral Wybrand Van Warwyck landed at Grand Port and named the island Mauritius after Prince Maurice of Nassau (Dutch: Maurits van Nassau) of the Dutch Republic. The Dutch inhabited the island in 1638, from which they exploited ebony trees and introduced sugar cane, domestic animals and deer. It was from here that Dutch navigator Abel Tasman set out to seek the Great Southern Land, mapping parts of Tasmania, New Zealand and New Guinea. The first Dutch settlement lasted 20 years. In 1639, the Dutch East India Company brought enslaved Malagasy to cut down ebony trees and to work in the new tobacco and sugar cane plantations. Several attempts to establish a colony permanently were subsequently made, but the settlements never developed enough to produce dividends, causing the Dutch to abandon Mauritius in 1710. A 1755 article in the English Leeds Intelligencer claims that the island was abandoned due to the large number of long tailed macaque monkeys which destroyed everything in it, and that it was also known at the time as the Island of Monkeys. Portuguese sailors had brought these monkeys to the island from their native habitat in Southeast Asia, prior to Dutch rule."
+                    android:textAlignment="inherit"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/title1"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="@dimen/_title_top"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:justificationMode="inter_word"
+                    android:text="French Mauritius (1715–1810)"
+                    android:textColor="#000"
+                    android:textSize="12dp" />
+
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:text="France, which already controlled neighbouring Île Bourbon (now Réunion), took control of Mauritius in 1715 and renamed it Isle de France. In 1723, the Code Noir was established to regulate slavery; categorise one group of human beings as goods, for the owner of these goods to be able to obtain insurance money and compensation in case of loss of his goods. The 1735 arrival of French governor Bertrand-François Mahé de La Bourdonnais coincided with development of a prosperous economy based on sugar production. Mahé de La Bourdonnais established Port Louis as a naval base and a shipbuilding centre. Under his governorship, numerous buildings were erected, a number of which are still standing. These include part of Government House, the Château de Mon Plaisir, and the Line Barracks, the headquarters of the police force. The island was under the administration of the French East India Company, which maintained its presence until 1767. During the French rule, slaves were brought from parts of Africa such as Mozambique and Zanzibar. As a result, the island's population rose dramatically from 15,000 to 49,000 within thirty years. During the late eighteenth century, African slaves accounted for around 80 percent of the island's population, and by the early nineteenth century there were 60,000 slaves on the island. In early 1729, Indians from Pondicherry, India, arrived in Mauritius aboard the vessel La Sirène. Work contracts for these craftsmen were signed in 1734 at the time when they acquired their freedom."
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+                <ImageView
+                    android:id="@+id/jacques_henri_bernardin"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="@dimen/_img_top"
+                    android:layout_marginRight="22dp"
+
+                   />
+
+                <TextView
+                    android:id="@+id/text2"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:text="From 1767 to 1810, except for a brief period during the French Revolution when the inhabitants set up a government virtually independent of France, the island was controlled by officials appointed by the French government. Jacques-Henri Bernardin de Saint-Pierre lived on the island from 1768 to 1771, then went back to France, where he wrote Paul et Virginie, a love story that made the Isle de France famous wherever the French language was spoken. In 1796 the settlers broke away from French control when the government in Paris attempted to abolish slavery. Two famous French governors were the Vicomte de Souillac (who constructed the Chaussée in Port Louis and encouraged farmers to settle in the district of Savanne) and Antoine Bruni d'Entrecasteaux (who saw to it that the French in the Indian Ocean should have their headquarters in Mauritius instead of Pondicherry in India). Charles Mathieu Isidore Decaen was a successful general in the French Revolutionary Wars and, in some ways, a rival of Napoléon I. He ruled as Governor of Isle de France and Réunion from 1803 to 1810. British naval cartographer and explorer Matthew Flinders was arrested and detained by General Decaen on the island from 1803 to 1810, in contravention of an order from Napoléon. During the Napoleonic Wars, Mauritius became a base from which French corsairs organised successful raids on British commercial ships. "
+                    android:textAlignment="inherit"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+                <ImageView
+                    android:id="@+id/isle_of_france"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="@dimen/_img_top"
+                    android:layout_marginRight="22dp"
+ />
+
+
+                <TextView
+
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:text="The raids continued until 1810, when a Royal Navy expedition led by Commodore Josias Rowley, R.N., an Anglo-Irish aristocrat, was sent to capture the island. Despite winning the Battle of Grand Port against the British, the French could not prevent the British from landing at Cap Malheureux three months later. They formally surrendered the island on the fifth day of the invasion, 3 December 1810, on terms allowing settlers to keep their land and property and to use the French language and law of France in criminal and civil matters. Under British rule, the island's name reverted to Mauritius."
+                    android:textAlignment="inherit"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/title2"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="@dimen/_title_top"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:justificationMode="inter_word"
+                    android:text="British Mauritius (1810–1968)"
+                    android:textColor="#000"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/text3"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:text="The British administration, which began with Sir Robert Farquhar as its first governor, oversaw rapid social and economic changes. However, it was tainted by the Ratsitatane episode. Ratsitatane, nephew of King Radama of Madagascar, was brought to Mauritius as a political prisoner. He managed to escape from prison and plotted a rebellion that would free the island's slaves. He was betrayed by his associate Laizaf and was caught by a group of militiamen and summarily executed.
+\n\nIn 1832, d'Épinay launched the first Mauritian newspaper (Le Cernéen), which was not controlled by the government. In the same year, there was a move by the procureur-general to abolish slavery without compensation to the slave owners. This gave rise to discontent, and, to check an eventual rebellion, the government ordered all the inhabitants to surrender their arms. Furthermore, a stone fortress, Fort Adelaide, was built on a hill (now known as the Citadel hill) in the centre of Port Louis to quell any uprising.[43] Slavery was gradually abolished over several years after 1833, and the planters ultimately received two million pounds sterling in compensation for the loss of their slaves, who had been imported from Africa and Madagascar during the French occupation. The abolition of slavery had important effects on Mauritius's society, economy and population. The planters brought a large number of indentured labourers from India to work in the sugar cane fields.
+"
+                    android:textAlignment="inherit"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+                <ImageView
+                    android:id="@+id/indian_labourers_arriving_in_mauritius"
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:layout_marginLeft="22dp"
+
+                    android:layout_marginTop="@dimen/_img_top"
+                    android:layout_marginRight="22dp"
+ />
+
+                <TextView
+                    android:id="@+id/text4"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:text="Between 1834 and 1921, around half a million indentured labourers were present on the island. They worked on sugar estates, factories, in transport and on construction sites. Additionally, the British brought 8,740 Indian soldiers to the island. Aapravasi Ghat, in the bay at Port Louis and now a UNESCO site, was the first British colony to serve as a major reception centre for indentured servants. The labourers brought from India were not always fairly treated, and a German, Adolph von Plevitz, made himself the unofficial protector of these immigrants. In 1871 he helped them to write a petition that was sent to Governor Gordon. A commission was appointed and recommended several measures that would affect the lives of Indian labourers during the next fifty years.
+\n\nIn 1885, a new constitution was introduced. It was referred to as CensDémocratique and it incorporated some of the principles advocated by one of the Creole leaders, OnésiphoBeaugeard. It created elected positions in the Legislative Council – although the franchise was restricted mainly to the white French and fair-skinned Indian elite who owned real estate. In 1886, Governor John Pope Hennessy nominated Gnanadicarayen Arlanda as the first ever Indo-Mauritian member of the ruling council – despite the sugar oligarchy's preference for rival Indo-Mauritian Emile Sandapa. Arlanda served until 1891. In 1903, motorcars were introduced in Mauritius, and in 1910, the first taxis came into service. The electrification of Port Louis took place in 1909, and in the same decade the Mauritius Hydro Electric Company of the Atchia Brothers was authorised to provide power to the towns of upper Plaines Wilhems.
+\n\nThe 1910s were a period of political agitation. The rising middle class (made up of doctors, lawyers, and teachers) began to challenge the political power of the sugar cane landowners. Eugène Laurent, mayor of Port Louis, was the leader of this new group; his party, Action Libérale, demanded that more people should be allowed to vote in the elections. Action Libérale was opposed by the Parti de l'Ordre, led by Henri Leclézio, the most influential of the sugar magnates. In 1911, there were riots in Port Louis due to a false rumour that Laurent had been murdered by the oligarchs in Curepipe. This became known as the 1911 Curepipe riots. Shops and offices were damaged in the capital, and one person was killed. In the same year, 1911, the first public cinema shows took place in Curepipe, and, in the same town, a stone building was erected to house the Royal College. In 1912, a wider telephone network came into service, used by the government, business firms, and a few private households.
+\n\nWorld War I broke out in August 1914. Many Mauritians volunteered to fight in Europe against the Germans and in Mesopotamia against the Turks. But the war affected Mauritius much less than the wars of the eighteenth century. In fact, the 1914–1918 war was a period of great prosperity, due to a boom in sugar prices. In 1919, the Mauritius Sugar Syndicate came into being, which included 70% of all sugar producers. The 1920s saw the rise of a retrocessionism movement, which favoured the retrocession of Mauritius to France. The movement rapidly collapsed because none of the candidates who wanted Mauritius to be given back to France were elected in the 1921 elections. In the post-war recession, there was a sharp drop in sugar prices. Many sugar estates closed down, marking the end of an era for the sugar magnates who had not only controlled the economy but also the political life of the country. From the end of nominated Arlanda's term in 1891, until 1926, there had been no Indo-Mauritian representation in the Legislative Council. However, at the 1926 elections, Dunputh Lallah and Rajcoomar Gujadhur became the first Indo-Mauritians to be elected to the Legislative Council. At Grand Port, Lallah won over rivals Fernand Louis Morel and Gaston Gebert; at Flacq, Gujadhur defeated Pierre Montocchio. 1936 saw the birth of the Labour Party, launched by Maurice Curé. Emmanuel Anquetil rallied the urban workers while Pandit Sahadeo concentrated on the rural working class. The Uba riots of 1937 resulted in reforms by the local British government that improved labour conditions and led to the un-banning of labour unions. Labour Day was celebrated for the first time in 1938. More than 30,000 workers sacrificed a day's wage and came from all over the island to attend a giant meeting at the Champ de Mars. Following the dockers' strikes, trade unionist Emmanuel Anquetil was deported to Rodrigues, Maurice Curé and Pandit Sahadeo were placed under house arrest, whilst numerous strikers were jailed. Governor Sir Bede Clifford assisted Mr Jules Leclezio of the Mauritius Sugar Syndicate to counter the effects of the strike by using alternative workers known as 'black legs'. At the outbreak of World War II in 1939, many Mauritians volunteered to serve under the British flag in Africa and the Near East, fighting against the German and Italian armies. Mauritius was never really threatened, but in 1943, several British ships were sunk outside Port Louis by German submarines. In the initial stages of the war, locally recruited military formations were raised in order to defend the country in case the British imperial troops had to leave. On 24 March 1943, the Mauritius Regiment, was created as an imperial unit and a new subsidiary of the East Africa Command (EAC). In late 1943, the 1st Battalion of the Mauritius Regiment (1MR) was sent to Madagascar for training, and in their place a battalion of the King's African Rifles (KAR) was stationed in Mauritius. The dispatch of the 1MR proved to be politically unpopular on the basis of some troops resenting conscription and the battalion overseas comprising solely non-white troops, exacerbating racial tensions in the country. The 1MR troops were further aggrieved at the segregation they were subject to, unequal pay, physically demanding training, and were fearful of the Japanese soldiers, all these factors culminated in the 1MR mutinying.
+\n\nDuring World War II, conditions were hard in the country; the prices of commodities doubled but workers' salaries increased only by 10 to 20 percent. There was civil unrest, and the colonial government censored all trade union activities. However, the labourers of Belle Vue Harel Sugar Estate went on strike on 27 September 1943. Police officers eventually fired directly at the crowd, resulting in the deaths of four labourers. This became known as the 1943 Belle Vue Harel Massacre. Social worker and leader of the Jan Andolan movement Basdeo Bissoondoyalorganised the funeral ceremonies of the four dead labourers. Three months later, on 12 December 1943, Bissoondoyalorganised a mass gathering at Marie Reine de la Paix in Port Louis, and the significant crowd of workers from all over the island confirmed the popularity of the Jan Andolan movement.
+\n\nAfter the proclamation of the 1947 Constitution of Mauritius, the general elections were held on 9 August 1948 – and, for the first time, the colonial government expanded the franchise to all adults who could write their name in one of the island's 19 languages, abolishing the previous gender and property qualifications. Guy Rozemont'sLabour Party won the majority of the votes with 11 of the 19 elected seats won by Hindus. However, the Governor-General Donald Mackenzie-Kennedy appointed 12 Conservatives to the Legislative Council on 23 August 1948 to perpetuate the predominance of white Franco-Mauritians. In 1948, Emilienne Rochecouste became the first woman to be elected to the Legislative Council. Guy Rozemont's party bettered its position in 1953, and, on the strength of the election results, demanded universal suffrage. Constitutional conferences were held in London in 1955 and 1957, and the ministerial system was introduced. Voting took place for the first time on the basis of universal adult suffrage on 9 March 1959. The general election was again won by the Labour Party, led this time by Sir Seewoosagur Ramgoolam.
+\n\nA Constitutional Review Conference was held in London in 1961, and a programme of further constitutional advance was established. The 1963 election was won by the Labour Party and its allies. The Colonial Office noted that politics of a communal nature was gaining ground in Mauritius and that the choice of candidates (by parties) and the voting behaviour (of electors) were governed by ethnic and caste considerations. Around that time, two eminent British academics, Richard Titmuss and James Meade, published a report of the island's social problems caused by overpopulation and the monoculture of sugar cane. This led to an intense campaign to halt the population explosion, and the decade registered a sharp decline in population growth.
+"
+                    android:textAlignment="inherit"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="@dimen/_title_top"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:justificationMode="inter_word"
+                    android:text="Independence (since 1968)"
+                    android:textColor="#000"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:text="At the Lancaster Conference of 1965, it became clear that Britain wanted to relieve itself of the colony of Mauritius. In 1959, Harold Macmillan had made his famous Wind of Change Speech in which he acknowledged that the best option for Britain was to give complete independence to its colonies. Thus, since the late fifties, the way was paved for independence.
+\n\nLater in 1965, after the Lancaster Conference, the Chagos Archipelago was excised from the territory of Mauritius to form the British Indian Ocean Territory (BIOT). A general election took place on 7 August 1967, and the Independence Party obtained the majority of seats.
+\n\nMauritius adopted a new constitution, and independence was proclaimed on 12 March 1968. Sir Seewoosagur Ramgoolam became the first prime minister of an independent Mauritius – with Queen Elizabeth II remaining head of state as Queen of Mauritius.
+"
+                    android:textAlignment="inherit"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+
+                <ImageView
+                    android:id="@+id/stamp_mauritius"
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:layout_marginLeft="22dp"
+
+                    android:layout_marginTop="@dimen/_img_top"
+                    android:layout_marginRight="22dp"
+ />
+
+                <TextView
+                    android:id="@+id/text5"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:text="At the Lancaster Conference of 1965, it became clear that Britain wanted to relieve itself of the colony of Mauritius. In 1959, Harold Macmillan had made his famous Wind of Change Speech in which he acknowledged that the best option for Britain was to give complete independence to its colonies. Thus, since the late fifties, the way was paved for independence.
+\n\nLater in 1965, after the Lancaster Conference, the Chagos Archipelago was excised from the territory of Mauritius to form the British Indian Ocean Territory (BIOT). A general election took place on 7 August 1967, and the Independence Party obtained the majority of seats.
+\n\nMauritius adopted a new constitution, and independence was proclaimed on 12 March 1968. Sir Seewoosagur Ramgoolam became the first prime minister of an independent Mauritius – with Queen Elizabeth II remaining head of state as Queen of Mauritius.
+"
+                    android:textAlignment="inherit"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/title4"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="@dimen/_title_top"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:justificationMode="inter_word"
+                    android:text="Republic (since 1992)"
+                    android:textColor="#000"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/text6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginBottom="50dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:text="On 12 March 1992, twenty-four years after independence, Mauritius was proclaimed a republic within the Commonwealth of Nations and the British monarch removed as head of state. The last Governor-General of Mauritius, Sir Veerasamy Ringadoo, became the first President.[91] This was under a transitional arrangement, in which he was replaced by CassamUteem later that year. Political power remained with the prime minister.
+\n\nDespite an improvement in the economy, which coincided with a fall in the price of petrol and a favourable dollar exchange rate, the government did not enjoy full popularity. As early as 1984, there was discontent. Through the Newspapers and Periodicals Amendment Act, the government tried to make every newspaper provide a bank guarantee of half a million rupees. Forty-three journalists protested by participating in a public demonstration in Port Louis, in front of Parliament. They were arrested and freed on bail. This caused a public outcry and the government had to review its policy.
+\n\nThere was also dissatisfaction in the education sector. There were not enough high-quality secondary colleges to answer the growing demand of primary school leavers who had got through their CPE (Certificate of Primary Education). In 1991, a master plan for education failed to get national support and contributed to the government's downfall.
+\n\nIn December 1995, Navin Ramgoolam was elected as PM of the Labour–MMM alliance. In October 1996, the triple murder of political activists at Gorah-Issac Street in Port Louis led to several arrests and a long investigation.
+\n\nThe year 1999 was marked by civil unrest and riots in February and then in May. Following the Kaya riots, President CassamUteem and Cardinal Jean Margéot toured the country and calm was restored after four days of turmoil. A commission of enquiry was set up to investigate the root causes of the social disturbance. The resulting report delved into the cause of poverty and qualified many tenacious beliefs as perceptions.[95] In January 2000, political activist Rajen Sabapathee was shot dead after he escaped from La Bastille jail.
+\n\nSir Anerood Jugnauth of the MSM returned to power in September 2000 after securing an alliance with the MMM. In 2002, the island of Rodrigues became an autonomous entity within the republic and was thus able to elect its own representatives to administer the island. In 2003, the prime ministership was transferred to Paul Bérenger of the MMM, and Sir Anerood Jugnauth became President. Bérenger was the first Franco-Mauritian Prime Minister in the country's post-Independence history.
+\n\nIn 2005 elections, Navin Ramgoolam became PM under the new coalition of Labour–PMXD–VF–MR–MMSM. In the 2010 elections the Labour–MSM–PMSD alliance secured power and Navin Ramgoolam remained PM until 2014.
+\n\nThe MSM–PMSD–ML coalition was victorious at the 2014 elections under Anerood Jugnauth's leadership. Despite disagreements within the ruling alliance that led to the departure of PMSD, the MSM–ML stayed in power for their full 5-year term.
+\n\nOn 21 January 2017, Sir Anerood Jugnauth announced his resignation and that his son and Finance Minister Pravind Jugnauth would assume the office of prime minister. The transition took place as planned on 23 January 2017.
+\n\nIn 2018, Mauritian president Ameenah Gurib-Fakim resigned over a financial scandal. The incumbent president is Prithvirajsing Roopun who has served since December 2019.
+\n\nIn the November 2019 Mauritius general elections, the ruling Militant Socialist Movement (MSM) won more than half of the seats in parliament, securing incumbent Prime Minister Pravind Kumar Jugnauth a new five-year term.
+\n\nOn 25 July 2020, Japanese-owned bulk carrier MV Wakashio ran aground on a coral reef off the coast of Mauritius, leaking up to 1,000 tonnes of heavy oil into a pristine lagoon. Its location on the edge of protected fragile marine ecosystems and a wetland of international importance made the MV Wakashio oil spill one of the worst environmental disasters ever to hit the western Indian Ocean.
+"
+                    android:textAlignment="inherit"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+        </ScrollView>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/more_layout"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="end"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/filled_card_bg"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:id="@+id/send"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp"
+            android:onClick="home">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Home"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/home_inactive"
+                android:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#9F9F9F" />
+
+        <RelativeLayout
+            android:id="@+id/edit"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp"
+            android:onClick="explore">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Explore"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/luggage_2"
+                app:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#9F9F9F" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp"
+            android:onClick="my_trips">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="My Trips"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/my_trip_2"
+                app:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#9F9F9F" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp"
+            android:onClick="iternties">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Itineraries"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/itinerary_4"
+                app:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#9F9F9F" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp"
+            android:onClick="tips">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Travel Tips"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/trip_tips_1"
+                app:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#9F9F9F" />
+
+        <RelativeLayout
+            android:id="@+id/eatBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Eat"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/eat_2"
+                app:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#9F9F9F" />
+
+        <RelativeLayout
+            android:id="@+id/stayBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Stay"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/hotel_1"
+                app:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#9F9F9F" />
+
+        <!--<RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Activities"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/activities_1"
+                app:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#9F9F9F" />
+-->
+        <RelativeLayout
+            android:id="@+id/toursBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Tours"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/tours"
+                app:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#9F9F9F" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp"
+            android:onClick="organier">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Organize"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/organizer"
+                app:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#9F9F9F" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp"
+            android:onClick="contact_us">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Contact Us"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/contact_5"
+                app:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#9F9F9F" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp"
+            android:onClick="about">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="App Info"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/info_2"
+                app:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#9F9F9F" />
+
+        <RelativeLayout
+            android:id="@+id/login_txt_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp">
+
+            <TextView
+                android:id="@+id/login_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Login"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/my_account"
+                app:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#FFFFFF" />
+
+    </LinearLayout>
+</RelativeLayout>

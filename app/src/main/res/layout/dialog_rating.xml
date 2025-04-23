@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/dialog_background"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:elevation="6dp">
+
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Slide to rate"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:fontFamily="@font/lexend_medium"
+        android:layout_gravity="center" />
+
+    <me.zhanghai.android.materialratingbar.MaterialRatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        app:mrb_progressBackgroundTint="#C5C5C5"
+        app:mrb_fillBackgroundStars="true"
+        android:layout_marginBottom="35dp"
+        android:indeterminateTint="@color/yellow"
+        app:backgroundTint="@color/yellow"
+        app:mrb_progressTint="@color/yellow"  />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="12dp"
+        android:gravity="center">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_dismiss"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_stroke"
+
+            android:text="Dismiss"
+            android:backgroundTint="#1976D2"
+            android:textColor="@android:color/white" />
+
+        <Space
+            android:layout_width="12dp"
+            android:layout_height="wrap_content" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_done"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Done"
+
+            android:layout_height="40dp"
+            android:background="@drawable/btn_stroke"
+            android:backgroundTint="#1976D2"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+    <EditText
+        android:id="@+id/review_text"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/transparent"
+        android:hint="How did you like this site?"
+        android:gravity="top|start"
+        android:inputType="textMultiLine"
+        android:maxLines="5" />
+
+    <TextView
+        android:id="@+id/char_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="12sp"
+        android:layout_gravity="end"
+        android:layout_marginTop="2dp"
+        android:textColor="#999" />
+
+</LinearLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="350dp"
+
+    android:background="@drawable/filled_card_bg"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="15sp"
+        android:orientation="vertical"
+
+        android:padding="2dp">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:background="#F6F8F8"
+            android:fontFamily="@font/poppins_light"
+            android:gravity="center"
+            android:paddingTop="6dp"
+            android:text="The First &amp; Last Name and Email field cannot be empty"
+            android:textColor="@color/black"
+            android:textSize="12dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="#D1D1D1" />
+
+        <TextView
+            android:id="@+id/title_ok"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/stroke_btn_bg"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="OK" />
+    </LinearLayout>
+
+</LinearLayout>

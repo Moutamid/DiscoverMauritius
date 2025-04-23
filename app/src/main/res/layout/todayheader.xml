@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/productsans_light"
+        android:text="THU"
+        android:textColor="#ff1a73e8"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:fontFamily="@font/latomedium"
+        android:text="30"
+        android:textColor="#ff1a73e8"
+        android:textSize="12sp" />
+</LinearLayout>

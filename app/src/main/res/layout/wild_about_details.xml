@@ -1,0 +1,1143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".activities.Explore.ExploreActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="#4472C4">
+
+            <ImageView
+                android:id="@+id/main_img"
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:onClick="BackPress"
+                android:src="@drawable/back_arrow"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/beach_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="22dp"
+                android:layout_marginEnd="20dp"
+                android:layout_toLeftOf="@+id/menu"
+                android:layout_toRightOf="@id/main_img"
+                android:fontFamily="@font/poppins_bold"
+                android:maxLines="1"
+                android:paddingTop="4dp"
+                android:text="Wildlife"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+
+            <ImageView
+                android:id="@+id/menu"
+                android:layout_width="24dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
+                android:onClick="menu"
+                android:src="@drawable/menu"
+                app:tint="@color/white" />
+
+            <ImageView
+                android:id="@+id/closebtn"
+                android:layout_width="24dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/close"
+                android:visibility="gone"
+                app:tint="@color/white" />
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/mauritius_wildlife"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="32dp"
+
+                    android:layout_marginRight="22dp"
+                    android:layout_marginBottom="23dp"
+                     />
+
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginTop="@dimen/_text_top"
+
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:text="The wildlife of Mauritius consists of its flora and fauna. Mauritius is located in the Indian Ocean to the east of Madagascar. Due to its isolation, it has a relatively low diversity of wildlife; however, a high proportion of these are endemic species occurring nowhere else in the world. Many of these are now threatened with extinction because of human activities including habitat destruction and the introduction of non-native species. Some have already become extinct, most famously the dodo which disappeared in the 17th century."
+                    android:textAlignment="inherit"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/title1"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="@dimen/_title_top"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:justificationMode="inter_word"
+                    android:text="Fauna"
+                    android:textColor="#000"
+                    android:textSize="12dp" />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:justificationMode="inter_word"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:text="Mammals"
+                    android:textColor="#000"
+                    android:textSize="10dp" />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:justificationMode="inter_word"
+                    android:text="Prehistorically, due to its isolated Indian Ocean location to the east of Madagascar, Mauritius had no endemic terrestrial mammals. The only mammals that could find their way to the island were bats and marine mammals.
+\n\nThe vast majority of mammalian species on the island have been introduced, either inadvertently or intentionally, by humans, such as the crab-eating macaque, rats, mice, small Indian mongoose, tailless tenrec, rusa (Indonesian deer), as well feral dogs and cats and farm livestock, such as domestic ruminants, pigs and goats.
+"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+                <ImageView
+                    android:id="@+id/monkey_mauritius"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginTop="@dimen/_img_top" />
+
+                <TextView
+                    android:id="@+id/text2"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:text="These introduced mammals have had a varied impact on the island's pristine fauna. Given that they were free from natural predators, they rapidly grew to large numbers and were soon preying on and competing with the local fauna.\n"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:textAlignment="inherit"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:justificationMode="inter_word"
+                    android:layout_marginTop="@dimen/_title_top"
+                    android:text="Bats"
+                    android:textColor="#000"
+                    android:textSize="12dp" />
+
+                <TextView
+
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:text="Of the two endemic species of fruit bats, only one remains in any substantial amount – the Mauritian flying fox (Pteropusniger), with the Rodrigues flying fox (P. rodricensis) still having been sighted, as well. Two insectivorous microbats also are present, the Mauritian tomb bat (Taphozousmauritianus) and the Natal free-tailed bat (Mormopterusacetabulosus).
+\n\nOn 7 November 2015, the government introduced a law authorising the culling of around 18,000 Mauritian fruit bats, despite protests, and despite the species' formal, legal protection and being ranked as a vulnerable species by the International Union for Conservation of Nature (IUCN). According to the IUCN, blaming the fruit bats for the  levels of damage caused to commercial fruit plantations is not substantiated, based on observations and research results.By July 2018, the IUCN again ranked the fruit bat, only this time as an endangered species, following the previous years' (2015-2017) government-sanctioned killings. Despite this elevated concern status, and still being afforded legal protection, October 2018 saw a reinstatement of the cull; this most recent cull called for all but 20% of the fruit bat population to be killed, leaving approximately 13,000 (of the estimated 65,000) fruit bats."
+
+                    android:textAlignment="inherit"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/title2"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginTop="@dimen/_title_top"
+                    android:fontFamily="@font/poppins_bold"
+                    android:justificationMode="inter_word"
+                    android:text="Birds"
+                    android:textColor="#000"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/text3"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:text="Over 100 bird species have been recorded in Mauritius. There are seven or eight surviving endemic species on the main island depending on taxonomy. The Mauritius grey white-eye is the most common of these, being widespread across the island including in man-made habitats. The others are less common and are mainly restricted to the Black River Gorges National Park in the south-west of the island. The Mauritius kestrel, Mauritius parakeet and pink pigeon all came close to extinction but are now increasing due to intensive conservation efforts."
+                    android:textAlignment="inherit"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+                <ImageView
+                    android:id="@+id/pink_pigeon_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="@dimen/_img_top"
+                    android:layout_marginRight="22dp"
+                     />
+
+                <TextView
+                    android:id="@+id/text4"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:justificationMode="inter_word"
+                    android:text="Rodrigues has two further endemic species, the Rodrigues warbler and Rodrigues fody. Many small islands are named after birds, although some have seen their seabird colonies reduced or driven extinct by threats such as logging, poachers, or introduced species."
+                    android:textAlignment="inherit"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+                <ImageView
+                    android:id="@+id/mauritius_fody"
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:layout_marginTop="@dimen/_img_top"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp" />
+
+                <TextView
+                    android:id="@+id/text5"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:justificationMode="inter_word"
+                    android:text="St Brandon islands are home to vast numbers of seabirds (Feare, 1984; Gardiner, 1907; Strauss in litt., 9.7.84). Staub and Gueho (1968) found a total of 26 species. Blue-faced boobies (Sula dactylatra) are found on Serpent Island and Ile du Nord. Large populations of sooty terns (Sterna fuscata) and white terns (Gygis alba) occur on Albatros, Ile Raphael and Siren islands. In 2010, a survey of seabirds of St Brandon was undertaken. It was estimated that 1 084 191 seabirds comprising seven breeding species and excluding non-breeders were present at the archipelago.
+\n\nSt Brandon has been proposed for a Marine Protected Area by the World Bank, has been identified as an Important Bird Area in Africa by BirdLife International, as a Marine Important Bird Area under the Nairobi Convention, and a Key Biodiversity Area by the CEPF. In 2011, the Ministry of Environment &amp; Sustainable Development issued the Mauritius Environment Outlook Report which stated that There is an urgent need to allocate more resources for a closer monitoring of the environmental assets of the islands. It further recommended that St Brandon be declared a marine protected area. In the President's Report of the Mauritian Wildlife Foundation dated March 2016, St Brandon is declared an official MWF project in order to promote the conservation of the atoll.
+\n\nA wide variety of birds have been introduced into Mauritius. These include some of the most common and conspicuous birds of the islands including the common myna, red fody, red-whiskered bulbul and zebra dove. The common myna is becoming a pest due to its well documented habit of displacing smaller bird species from their habitat and also destroying the smaller bird species young. The mynas were introduced for commercial reasons, primarily to help control the locusts which eat the sugar cane leafage. Instead, they prey on small indigenous lizards which are easier to catch due to their basking habits which is required for their metabolism. The lizards have become the myna's primary source of food. Because of this, an imbalance is being created with insects which the lizard would prey on which the common myna does not eat due to its inability to crawl under rocks and forage in the dense grass, flora, and fauna.
+"
+                    android:textAlignment="inherit"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/title4"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginTop="@dimen/_title_top"
+                    android:fontFamily="@font/poppins_bold"
+                    android:justificationMode="inter_word"
+                    android:text="Reptiles"
+                    android:textColor="#000"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/text6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:text="A number of endemic reptiles are found in Mauritius, particularly on Round Island. These include day geckos (Phelsuma), night geckos (Nactus), skinks and the keel-scaled boa."
+                    android:textAlignment="inherit"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+
+                <ImageView
+                    android:id="@+id/geko"
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:layout_marginTop="@dimen/_img_top"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                   />
+
+                <TextView
+                    android:id="@+id/text7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:text="Several species of giant tortoise of the genus Cylindraspis formerly inhabited the island but are now extinct. As the largest terrestrial herbivores, they performed an important role in the natural Mauritian ecosystem and in the regeneration of the Mauritian forests. For this reason, the Seychelles' Aldabra giant tortoise has been introduced to the Pamplemousses gardens and various patches of remaining Mauritian indigenous forest.
+\n\nThe critically endangered hawksbill turtle (17% of the archipelago) and the endangered green turtle (75% of the archipelago) visit St. Brandon, with a focus on L'Île Coco which is critically important for the visiting hawksbill turtle. The CargadosCarajos shoals are of national as well as international importance, being the very last important turtle nesting area in Mauritius.
+"
+                    android:textAlignment="inherit"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/title6"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginTop="@dimen/_title_top"
+                    android:justificationMode="inter_word"
+                    android:text="Freshwater fauna"
+                    android:textColor="#000"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/text8"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:text="In the 1950s, guppies locally known as millions abounded in Mauritian rivers. These little fish, often found in brackish water, appear to be outnumbered now by swordtails, introduced in the 1960s. Bigger fish like the carp and the gourami have also dwindled after the introduction of the tilapia in the 1950s. A popular freshwater fish used to be the damecéré, (known as carpe de Maillard in French) introduced by Monsieur Céré, an administrator of Pamplemousses garden during the French period. These silver tinted fish were common in ponds and lakes in the 1950s but are now rarely seen. They were often offered for sale at the Port-Louis Central Market and by street vendors.
+\n\nRecently the berri rouge has been introduced in view of supplementing the diet of the local population in protein. These fish are related to the tilapia but are somewhat rosy coloured. They are mostly bred on aquaculture farms. The catfish is also a newcomer and has most probably been dumped into local waters by aquarists. These fish are proving to be a nuisance and are disturbing the ecosystem of Mauritian rivers.
+\n\nAll the above fish have been introduced. Indigenous fish are few, and one of them is the goby, locally known as the cabot. They are extremely voracious fish and have been observed to swallow fish almost their size. The adults are found mostly near estuaries while the younger fish prefer the lower course of rivers. Seldom active, they lie in wait to pounce on an unsuspecting prey. Gobies go to lay their eggs in the sea, and the larvae swim upstream around December. Locally known as bichiques, they are caught and eaten as a delicacy by the local population. But their numbers seem to have considerably dwindled. (There is another theory that gobies do not go to the sea but that their eggs are swept into the ocean by water currents; the larvae swim upstream in great numbers during the new moon.)
+\n\nA fish that can live both in sea and fresh water is the milkfish. Known locally as loubine, it is found in fairly great numbers near estuaries at particular times of the year. These young fish are often caught and eaten fried. However, this practice should be discouraged because these fish can grow very fast to adults weighing over 25 kg.[10] This is perhaps the fish that the Dutch saw when they first landed in Mauritius in 1598. As reported by historians: they saw many fish in the streams around the coast, and some large birds which dived after the fish and ate them.
+ \n\nThe mullet also lives in shoals near estuaries but go up rivers in search of food. It is sometimes caught by fishermen on riverbanks who use bread as bait. However, it is a notoriously difficult fish to catch.
+ \n\nAn easier game for the freshwater fisherman is perhaps the silver moonfish, which can also be fished along rivers, notably the Grand River Northwest.
+ \n\nAnother indigenous dweller of Mauritian rivers and lakes is the eel. It is not very often seen and prefers to stay in crevices or hide under rocks. Eels spend most of their time in fresh water but go back to the sea, where they come from, to reproduce. Mauritian eels, like those from Madagascar, Réunion, Seychelles and East Africa, have their breeding grounds in the Nazareth Trough, an ocean trench situated between longitudes 60-65 °E and latitudes 10-20 °S. Eels can wriggle across land, and this perhaps explains why eels are found in some isolated ponds of Mauritius. There are three varieties of eels on the island. Two of them are found in Madagascar, Reunion and Africa, while the third one is present in the Seychelles. Most probably, the commonest eel is the marbled eel. Eels can grow quite big, if they cannot find a way to go back to the sea.[12] This perhaps explains why some very big eels have been caught in Mauritius, notably at La Ferme reservoir. In Rodrigues an eel more than 2 metres long was caught in a spring, in the heart of a forest, at Cascade-Pigeon.[13] It is believed that the eel was 100 years old. There is a theory that eels play an important role in ecosystems; they prevent springs from drying up. All three Mauritian species take a silvery colour when they go back to the sea.
+ \n\nShrimps are common on the banks of most rivers. There are about six varieties of shrimps, and some of them are endemic. One type of shrimp is the chevrette grand bras. This shrimp has a transparent body speckled with tiny reddish-brown or black spots. The female, smaller than the male, has two pincers of equal length but of a thinner size. Another type is the crevette chevaquine. It prefers to live near estuaries.
+                "
+                    android:textAlignment="inherit"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+                <ImageView
+                    android:id="@+id/shrimps"
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:layout_marginTop="@dimen/_img_top"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                   />
+
+                <TextView
+                    android:id="@+id/title7"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:layout_marginTop="@dimen/_text_top"
+
+                    android:justificationMode="inter_word"
+                    android:text="Crayfish are also found in many rivers, especially those that are swift running and well oxygenated. A crayfish, locally known as the bétangue, is endemic to Mauritius. It is easily recognized by its pincers, one being much bigger than the other. It is of a brownish orangecolour and can reach a size of 10 centimetres (3.9 in). It has nocturnal habits and is becoming very rare. Another variety is the chevrette sonz. It is of a smaller size and has thin pincers. A third variety is the camaron. It is light blue and the male is longer than the female, although the latter is of a bigger girth. Its size can sometimes exceed 30 centimetres (12 in) (pincers included). After hatching, the larvae of most crayfish go to live in the sea, and swim back to the river when they reach adult stage. This migration is often done against fast moving currents, and crayfish have been observed to climb waterfalls by clinging on rocks.
+\n\nFreshwater crabs are often found in waterways close to the sea. During the reproductive period, the adults gather on some riverbanks near the coast. The eggs are swept into the sea by water currents, and on hatching the young are carried into the river or coastal pond by the tides. The crabs feed mostly on algae and other vegetable matter.
+\n\nSoft shell terrapins with long necks have been noticed in some rivers. They are of Chinese origin and were apparently introduced in a river of the Moka District about a century ago; these reptiles are considered to be aggressive and are fast invading other rivers of the island.
+"
+                    android:textColor="#000"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginTop="@dimen/_title_top"
+                    android:justificationMode="inter_word"
+                    android:text="Flora"
+                    android:textColor="#000"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginTop="@dimen/_title_top"
+                    android:fontFamily="@font/poppins_bold"
+                    android:justificationMode="inter_word"
+                    android:text="Indigenous flora"
+                    android:textColor="#000"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:justificationMode="inter_word"
+                    android:text="
+Over 700 native species of flowering plant are found in Mauritius and nearly half of these (246) are endemic. Rainforest formerly covered most of the island with palm savannah in drier regions and areas of heathland in the mountains. Most of this natural vegetation has been destroyed and what remains is threatened by the spread of introduced plants.
+\n\nNative trees include eleven surviving species of Mauritius ebony (Diospyros tesselaria, Diospyros egrettarum, Diospyros revaughanii, Diospyros melanida, Diospyros leucomelas and several others), takamaka (Calophyllumtacamahaca), manglier vert (Sideroxylon cinereum), manglier rouge (Sideroxylonpuberulum), ox tree (Polysciasmaraisiana), bois de natte (Labourdonnaisia species) and a range of other indigenous and endemic tree species.
+"
+                    android:textColor="#000"
+                    android:textSize="12dp" />
+
+                <ImageView
+                    android:id="@+id/ebony"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginTop="@dimen/_img_top"
+ />
+
+                <TextView
+                    android:id="@+id/text9"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:justificationMode="inter_word"
+                    android:text="The palm species that are indigenous to the island of Mauritius are Acanthophoenix rubra (possibly other species), Dictyosperma album (var. album &amp; conjugatum), Hyophorbeamaricaulis, Hyophorbelagenicaulis, Hyophorbevaughanii, Latania loddigesii and Tectiphiala ferox.
+\n\nMauritius is the home of a large number of endemic species of Pandanus (screwpine or vacoas), namely: Pandanus carmichaelii, Pandanus barkleyi, Pandanus conglomeratus, Pandanus drupaceus, Pandanus eydouxia, Pandanus glaucocephalus, Pandanus iceryi, Pandanus incertus, Pandanus macrostigma, Pandanus microcarpus, Pandanus obsoletus, Pandanus palustris, Pandanus prostratus, Pandanus pseudomontanus, Pandanus pyramidalis, Pandanus rigidifolius, Pandanus sphaeroides, Pandanus spathulatus, Pandanus vandermeeschii and Pandanus wiehei. The common vacoas sac (Pandanus utilis) of Madagascar has also been introduced and propagated in Mauritius, and it has now naturalised.
+\n\nThe national flower of Mauritius is Trochetiaboutoniana or boucle d'oreille which is now restricted to a single mountain.
+"
+                    android:textAlignment="inherit"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/title8"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="@dimen/_title_top"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:justificationMode="inter_word"
+                    android:text="Introduced and invasive plants"
+                    android:textColor="#000"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/text10"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:text="Introduced plants that have become invasive include Chinese (actually Brazilian) guava (Psidium littorale), travellers trees (Ravenala) and Lantana camara.
+"
+                    android:textAlignment="inherit"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+                <ImageView
+                    android:id="@+id/lantana"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:layout_marginTop="@dimen/_img_top"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+              />
+
+                <TextView
+                    android:id="@+id/text11"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:text="For the purpose of landscaping and gardening in Mauritius, exotics have traditionally been used, and many of these have spread into the surrounding vegetation. Bougainvillea (Bougainvillea glabra) and frangipani (Plumeria alba) are still among the most commonly planted ornamental species.
+\n\nHowever, for urban and roadside landscaping Mauritius is beginning to turn to their many varied and unique endemic plant species. Many endemic species, such as bottle palms and ox tree, are now being used as ornamentals for both public landscaping and in private gardens across Mauritius.
+"
+                    android:textAlignment="inherit"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginTop="@dimen/_title_top"
+                    android:justificationMode="inter_word"
+
+                    android:text="Conservation"
+                    android:textColor="#000"
+                    android:textSize="14dp" />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:text="Conservation work in Mauritius is carried out by the Forestry Service, National Parks and Conservation Service (NPCS) and by non-governmental organizations such as the Mauritian Wildlife Foundation (MWF) and the Durrell Wildlife Conservation Trust (DWCT). Efforts to preserve native flora and fauna have included captive breeding, habitat restoration and the eradication of introduced species.
+\n\nProtection involves three national parks, nature reserves, a range of other protected areas, and botanical gardens for education and public outreach. Black River Gorges National Park covers 65.74 km2 (25.38 sq mi) of land and another 45 km2 (17 sq mi) is protected by nature reserves such as Round Island and Île aux Aigrettes.
+"
+                    android:textAlignment="inherit"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+                <ImageView
+                    android:id="@+id/black_river"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:layout_marginTop="@dimen/_img_top"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginTop="@dimen/_title_top"
+                    android:justificationMode="inter_word"
+                    android:text="National Perks"
+                    android:textColor="#000"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:text="•	Black River Gorges National Park (also part of a greater Biosphere Reserve which includes the Gerald Durrell Endemic Wildlife Sanctuary)
+\n\n•	Bras d'Eau National Park
+\n•	Islets National Park
+"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginTop="@dimen/_title_top"
+                    android:fontFamily="@font/poppins_bold"
+                    android:justificationMode="inter_word"
+                    android:text="Mainland nature reserves"
+                    android:textColor="#000"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="@dimen/_title_top"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:text="•	Macchabée-Bel Ombre Nature Reserve, the largest reserve (3,611 ha), formed from six constituent reserves in 1980.
+\n\n•	Corps de Garde Nature Reserve
+\n•	Le Pouce Nature Reserve
+\n•	Perrier Nature Reserve
+\n•	Bois Sec Nature Reserve
+\n•	Gouly Pere Nature Reserve
+\n•	Cabinet Nature Reserve
+\n•	Les Mares Nature Reserve
+\n•	Grande Montagne Nature Reserve, Rodrigues (20 ha)
+\n•	Anse Quitor Nature Reserve, Rodrigues (34 ha)
+"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:fontFamily="@font/poppins_bold"
+                    android:justificationMode="inter_word"
+                    android:text="Offshore islets nature reserves"
+                    android:textColor="#000"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:text="
+\n\n•	Ile aux Aigrettes Nature Reserve
+\n•	Ile Plate (Flat Island) Nature Reserve
+\n•	Ile Ronde (Round Island) Nature Reserve
+\n•	Ilot Gabriel Nature Reserve
+\n•	Coin de Mire (Gunner's Quoin) Nature Reserve
+\n•	Ilot Marianne Nature Reserve
+\n•	Ile aux Serpents Nature Reserve
+\n•	Ile aux Cocos Nature Reserve, Rodrigues (14 ha)
+\n•	Ile aux Sables Nature Reserve, Rodrigues (8 ha)
+"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginTop="@dimen/_title_top"
+                    android:justificationMode="inter_word"
+                    android:text="Botanical gardens"
+                    android:textColor="#000"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:text="•	Pamplemousses Botanical Garden
+\n\n•	Monvert Nature Park
+\n•	Valléed'Osterlog Botanical Garden
+\n•	Curepipe Botanic Gardens
+
+"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_marginTop="@dimen/_title_top"
+                    android:justificationMode="inter_word"
+                    android:text="Other protected areas"
+                    android:textColor="#000"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginTop="@dimen/_text_top"
+                    android:fontFamily="@font/poppins_regular"
+                    android:justificationMode="inter_word"
+                    android:text="•	Ebony Forest Chamarel
+\n\n•	François Leguat Giant Tortoise and Cave Reserve, Rodrigues
+\n•	Vallee de Ferney Conservation Trust
+\n•	St Brandon
+
+"
+                    android:textColor="#75706b"
+                    android:textSize="12dp" />
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/more_layout"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="end"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/filled_card_bg"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:id="@+id/send"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp"
+            android:onClick="home">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Home"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/home_inactive"
+                android:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#9F9F9F" />
+
+        <RelativeLayout
+            android:id="@+id/edit"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp"
+            android:onClick="explore">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Explore"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/luggage_2"
+                app:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#9F9F9F" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp"
+            android:onClick="my_trips">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="My Trips"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/my_trip_2"
+                app:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#9F9F9F" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp"
+            android:onClick="iternties">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Itineraries"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/itinerary_4"
+                app:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#9F9F9F" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp"
+            android:onClick="tips">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Travel Tips"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/trip_tips_1"
+                app:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#9F9F9F" />
+
+        <RelativeLayout
+            android:id="@+id/eatBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Eat"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/eat_2"
+                app:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#9F9F9F" />
+
+        <RelativeLayout
+            android:id="@+id/stayBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Stay"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/hotel_1"
+                app:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#9F9F9F" />
+
+        <!-- <RelativeLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginStart="13dp"
+             android:layout_marginTop="13dp"
+             android:layout_marginEnd="13dp">
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:fontFamily="@font/poppins_medium"
+                 android:text="Activities"
+                 android:textSize="12dp" />
+
+             <ImageView
+                 android:layout_width="15dp"
+                 android:layout_height="15dp"
+                 android:layout_alignParentEnd="true"
+                 android:src="@drawable/activities_1"
+                 app:tint="@color/black" />
+
+
+         </RelativeLayout>
+
+         <View
+             android:layout_width="match_parent"
+             android:layout_height="1dp"
+             android:layout_marginTop="6dp"
+             android:background="#9F9F9F" />-->
+
+        <RelativeLayout
+            android:id="@+id/toursBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Tours"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/tours"
+                app:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#9F9F9F" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp"
+            android:onClick="organier">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Organize"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/organizer"
+                app:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#9F9F9F" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp"
+            android:onClick="contact_us">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Contact Us"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/contact_5"
+                app:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#9F9F9F" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp"
+            android:onClick="about">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="App Info"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/info_2"
+                app:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#9F9F9F" />
+
+        <RelativeLayout
+            android:id="@+id/login_txt_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="13dp">
+
+            <TextView
+                android:id="@+id/login_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Login"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/my_account"
+                app:tint="@color/black" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="6dp"
+            android:background="#FFFFFF" />
+
+    </LinearLayout>
+</RelativeLayout>

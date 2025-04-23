@@ -1,0 +1,132 @@
+<!-- res/layout/list_item_layout.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="90dp"
+    android:layout_margin="6dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="6dp">
+
+        <TextView
+            android:id="@+id/number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="#000"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="30dp"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_toStartOf="@+id/textView3"
+            android:layout_toEndOf="@id/imageView"
+            android:fontFamily="@font/poppins_bold"
+            android:maxLines="1"
+            android:layout_marginEnd="20dp"
+            android:text="Item Text"
+            android:textColor="#000"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Item Text"
+            android:layout_toEndOf="@id/imageView"
+            android:maxLines="1"
+            android:layout_marginEnd="90dp"
+            android:textColor="#000"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView1"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/imageView"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Item Text"
+            android:layout_marginEnd="90dp"
+            android:maxLines="1"
+
+            android:textColor="#000"
+            android:textSize="10sp" />
+
+        <ImageView
+            android:id="@+id/add"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toLeftOf="@+id/map"
+            android:src="@drawable/add"
+            app:tint="#516EF4" />
+        <ImageView
+            android:id="@+id/remove"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toLeftOf="@+id/map"
+            android:src="@drawable/minus"
+            app:tint="#516EF4" />
+
+        <ImageView
+            android:id="@+id/map"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/map_location"
+            app:tint="#5c79ff" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="2h 1m\n167.0km"
+            android:textColor="#64000000"
+            android:textSize="11sp" />
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.company.contentprovider.READ_DATABASE" />
+    <uses-permission android:name="com.company.contentprovider.WRITE_DATABASE" />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:name=".helper.MyApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SQLApp">
+        <activity
+            android:name=".activities.Tour.ToursActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.InAppPurchase.InAppPurchaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.RemeberPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.CreateAccountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.AppInfo.AppInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.AboutMauritius.AboutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.AboutMauritius.HistoryAboutDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.AboutMauritius.WildAboutDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.AboutMauritius.AboutDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.TravelTipsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Calender.calenderapp.month.MonthActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.Calender.calenderapp.week.WeekActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.Calender.calenderapp.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.Calender.CalenderActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.Organizer.EditOrganizerDetailsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.Organizer.ImageViewrActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Organizer.PdfViewerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Organizer.SendActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Organizer.DocDetailsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.Organizer.CreateActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.Organizer.MyDocsActivity"
+            android:exported="false"
+            android:theme="@style/BottomNavigation" />
+        <activity
+            android:name=".activities.Organizer.OrganizerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.Iteneraries.ItinerariesActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.MyTripsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Beaches.BeachDetails"
+            android:exported="true" />
+        <activity
+            android:name=".activities.TourshipActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Explore.ExploreDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Beaches.BeachesTypeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Beaches.BeachesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Explore.ExploreActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.Iteneraries.ItenerariesDetails"
+            android:exported="false" />
+        <activity
+            android:name=".activities.DashboardActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".activities.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.SavedDataActivity"
+            android:exported="false" />
+
+
+        <activity
+            android:name=".activities.SavedDetailsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".offlinemap.MapActivity"
+            android:exported="true" />
+        <activity
+            android:name=".offlinemap.FullMapActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.ContactUs.ContactUsActivity"
+            android:exported="true" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+        <activity android:name=".activities.Stay.StayActivity"
+            android:exported="false"/>
+        <activity android:name=".activities.Stay.EatActivity"
+            android:exported="false"/>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.facebook.sdk.ClientToken"
+            android:value="@string/facebook_client_token" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAuIxeEpQQgN84bBitDRksZTcLHtIKSAeY" />
+    </application>
+
+</manifest>

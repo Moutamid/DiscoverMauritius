@@ -1,0 +1,82 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.SQLApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorAccent">@color/black</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+
+    <style name="BottomNavigation" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorAccent">@color/black</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+    </style>
+    <style name="ErrorInHintTextInputDisable">
+        <item name="android:textColorHint">#818181</item>
+        <item name="errorEnabled">true</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="maxLines">1</item>
+        <item name="android:paddingTop">4.5dp</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="background">@null</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="ErrorInHintTextInput">
+        <item name="android:textColorHint">#818181</item>
+        <item name="errorEnabled">true</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="maxLines">1</item>
+        <item name="android:paddingTop">9.5dp</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="background">@null</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:paddingEnd">16dp</item> <!-- Added padding end -->
+    </style>
+
+    <style name="TextInputLayoutStyle">
+        <item name="android:textColorHint">#818181</item>
+        <item name="height">50dp</item>
+        <item name="android:paddingTop">3dp</item>
+        <item name="android:paddingStart">5dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:paddingEnd">10dp</item>
+    </style>
+
+    <style name="PopupMenu" parent="@android:style/Widget.PopupMenu">
+        <item name="android:popupBackground">#ffffff</item>
+    </style>
+
+    <style name="Theme.SQLApp" parent="Base.Theme.SQLApp" />
+
+    <style name="TitleBarTextAppearance" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/googlesans_regular</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#464646</item>
+    </style>
+
+    <style name="NewFontStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/googlesansmed</item>
+    </style>
+
+    <style name="ThemeOverlay.AppCompat.navTheme">
+
+        <!-- Color of text and icon when SELECTED -->
+        <item name="colorPrimary">@color/selectday</item>
+
+        <!-- Background color when SELECTED -->
+        <item name="colorControlHighlight">#3C1A73E8</item>
+
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="BottomNavigationTextStyle">
+        <item name="android:textSize">14sp</item> <!-- Change the text size as needed -->
+    </style>
+</resources>

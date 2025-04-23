@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/edit_bg"
+
+    android:padding="26dp">
+
+    <!-- Add your desired UI elements here -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alert "
+        android:fontFamily="@font/poppins_bold"
+        android:textSize="16sp"
+        android:textColor="@android:color/black" />
+    <TextView
+        android:id="@+id/dialog_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Only images and text will be send. Files can't be send through email."
+        android:fontFamily="@font/poppins_light"
+        android:textSize="14sp"
+        android:layout_marginTop="10dp"
+        android:textColor="@android:color/black" />
+
+</LinearLayout>

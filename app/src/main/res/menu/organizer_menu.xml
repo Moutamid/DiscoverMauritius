@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/home"
+
+        android:icon="@drawable/home_inactive" />
+    <item android:id="@+id/doc"
+        android:icon="@drawable/documents_active" />
+    <item android:id="@+id/calender_menu"
+        android:icon="@drawable/calendar_day_inactive" />
+</menu>

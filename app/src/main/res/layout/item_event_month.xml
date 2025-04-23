@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_stroke_event"
+
+    >
+
+
+    <TextView
+        android:id="@+id/event_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/latomedium"
+        android:padding="1dp"
+        android:paddingStart="8dp"
+
+        android:maxLines="1"
+
+        android:textColor="#000"
+        android:textSize="8sp" />
+
+</RelativeLayout>

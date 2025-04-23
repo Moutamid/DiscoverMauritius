@@ -1,0 +1,47 @@
+package com.moutamid.sqlapp.activities.Calender.calenderapp.weekview;
+
+import org.joda.time.LocalDate;
+
+import java.util.Calendar;
+
+/**
+ * Created by jesse on 6/02/2016.
+ * and modify some code by jignesh khunt for https://github.com/jignesh13/googlecalendar
+ */
+public class WeekViewUtil {
+
+
+    /////////////////////////////////////////////////////////////////
+    //
+    //      Helper methods.
+    //
+    /////////////////////////////////////////////////////////////////
+
+    /**
+     * Checks if two times are on the same day.
+     *
+     * @param dayOne The first day.
+     * @param dayTwo The second day.
+     * @return Whether the times are on the same day.
+     */
+    public static boolean isSameDay(Calendar dayOne, Calendar dayTwo) {
+        return new LocalDate(dayOne.getTimeInMillis()).isEqual(new LocalDate(dayTwo.getTimeInMillis()));
+//        Log.e("compare".,new LocalDate(dayOne.getTimeInMillis()) +"=="+new LocalDate(dayTwo.getTimeInMillis()));
+//        return dayOne.get(Calendar.YEAR) == dayTwo.get(Calendar.YEAR) && dayOne.get(Calendar.DAY_OF_YEAR) == dayTwo.get(Calendar.DAY_OF_YEAR);
+    }
+
+
+    /**
+     * Returns a calendar instance at the start of this day
+     *
+     * @return the calendar instance
+     */
+    public static Calendar today() {
+        Calendar today = Calendar.getInstance();
+        today.set(Calendar.HOUR_OF_DAY, 0);
+        today.set(Calendar.MINUTE, 0);
+        today.set(Calendar.SECOND, 0);
+        today.set(Calendar.MILLISECOND, 0);
+        return today;
+    }
+}

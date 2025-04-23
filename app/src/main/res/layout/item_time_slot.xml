@@ -1,0 +1,22 @@
+<!-- item_time_slot.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/time_text_view"
+        android:layout_width="match_parent"
+        android:textSize="40dp"
+        android:text="09:"
+        android:layout_height="wrap_content"
+         />
+
+    <!-- Dynamic line indicating current time -->
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bluefb2"
+        android:visibility="gone" />
+</LinearLayout>
