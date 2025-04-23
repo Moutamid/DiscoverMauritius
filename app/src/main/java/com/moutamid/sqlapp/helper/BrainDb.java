@@ -6,7 +6,6 @@ import com.moutamid.sqlapp.model.BrainDataModel;
 import java.util.ArrayList;
 
 public class BrainDb {
-    .9695
     public ArrayList<BrainDataModel> eastBrainList() {
         ArrayList<BrainDataModel> dataList = new ArrayList<>();
 
