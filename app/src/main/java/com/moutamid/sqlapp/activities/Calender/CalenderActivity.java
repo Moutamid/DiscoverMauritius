@@ -6,25 +6,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupMenu;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.app.AppCompatActivity;import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-//import com.moutamid.sqlapp.MainActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.moutamid.sqlapp.R;
-import com.moutamid.sqlapp.activities.AboutMauritius.WildAboutDetailsActivity;
 import com.moutamid.sqlapp.activities.AppInfo.AppInfoActivity;
 import com.moutamid.sqlapp.activities.ContactUs.ContactUsActivity;
 import com.moutamid.sqlapp.activities.DashboardActivity;
 import com.moutamid.sqlapp.activities.Explore.ExploreActivity;
 import com.moutamid.sqlapp.activities.Iteneraries.ItinerariesActivity;
-import com.moutamid.sqlapp.activities.LoginActivity;
 import com.moutamid.sqlapp.activities.MyTripsActivity;
 import com.moutamid.sqlapp.activities.Organizer.Fragment.DocumentFragment;
 import com.moutamid.sqlapp.activities.Organizer.OrganizerActivity;
@@ -35,7 +31,8 @@ public class CalenderActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+protected void onCreate(Bundle savedInstanceState) {
+    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_docs);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);

@@ -526,8 +526,6 @@ public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.ViewHold
                         Stash.put("model", model);
                         intent = new Intent(context, BeachDetails.class);
                         context.startActivity(intent);
-
-
                     } else {
                         com.moutamid.sqlapp.model.DatabaseHelper databaseHelper = new com.moutamid.sqlapp.model.DatabaseHelper(context);
                         databaseHelper.insertBeacModel(model);

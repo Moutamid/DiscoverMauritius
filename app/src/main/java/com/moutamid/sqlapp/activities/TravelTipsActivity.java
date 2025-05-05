@@ -5,15 +5,16 @@ import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.moutamid.sqlapp.R;
 
 public class TravelTipsActivity extends AppCompatActivity {
     TextView tips;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+protected void onCreate(Bundle savedInstanceState) {
+    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel_tips);
         tips=findViewById(R.id.tips);

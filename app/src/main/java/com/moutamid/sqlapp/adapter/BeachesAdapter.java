@@ -203,7 +203,7 @@ public class BeachesAdapter extends BaseAdapter {
             }
         });
 
-        main_lyt.setOnClickListener(new View.OnClickListener() {
+        imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 triggerModel(position, textView, add, remove, true);

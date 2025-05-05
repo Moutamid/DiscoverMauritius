@@ -2,23 +2,19 @@ package com.moutamid.sqlapp.activities.AboutMauritius;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupMenu;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.bumptech.glide.Glide;
 import com.moutamid.sqlapp.R;
 import com.moutamid.sqlapp.activities.AppInfo.AppInfoActivity;
-import com.moutamid.sqlapp.activities.Calender.CalenderActivity;
 import com.moutamid.sqlapp.activities.ContactUs.ContactUsActivity;
 import com.moutamid.sqlapp.activities.DashboardActivity;
 import com.moutamid.sqlapp.activities.Explore.ExploreActivity;
 import com.moutamid.sqlapp.activities.Iteneraries.ItinerariesActivity;
-import com.moutamid.sqlapp.activities.LoginActivity;
 import com.moutamid.sqlapp.activities.MyTripsActivity;
 import com.moutamid.sqlapp.activities.Organizer.OrganizerActivity;
 import com.moutamid.sqlapp.activities.TravelTipsActivity;
@@ -29,7 +25,8 @@ import java.io.File;
 public class HistoryAboutDetailsActivity extends AppCompatActivity {
 ImageView mauritius_history, jacques_henri_bernardin, isle_of_france, indian_labourers_arriving_in_mauritius, stamp_mauritius;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+protected void onCreate(Bundle savedInstanceState) {
+    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.history_about_details);
         Utils.loginBtnMenuListener(this);

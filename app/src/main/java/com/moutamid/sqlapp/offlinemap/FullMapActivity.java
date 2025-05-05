@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.moutamid.sqlapp.R;
 
 import org.mapsforge.core.graphics.Bitmap;
@@ -38,7 +38,8 @@ public class FullMapActivity extends AppCompatActivity {
     MapView mapView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+protected void onCreate(Bundle savedInstanceState) {
+    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         AndroidGraphicFactory.createInstance(getApplicationContext()); // Ensure the factory is initialized
         setContentView(R.layout.activity_full_map);

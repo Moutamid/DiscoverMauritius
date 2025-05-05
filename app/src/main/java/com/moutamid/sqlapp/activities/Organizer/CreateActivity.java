@@ -9,7 +9,6 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.pdf.PdfDocument;
 import android.graphics.pdf.PdfRenderer;
 import android.net.Uri;
 import android.os.Build;
@@ -40,8 +39,8 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.app.AppCompatActivity;import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -54,7 +53,6 @@ import com.moutamid.sqlapp.activities.ContactUs.ContactUsActivity;
 import com.moutamid.sqlapp.activities.DashboardActivity;
 import com.moutamid.sqlapp.activities.Explore.ExploreActivity;
 import com.moutamid.sqlapp.activities.Iteneraries.ItinerariesActivity;
-import com.moutamid.sqlapp.activities.LoginActivity;
 import com.moutamid.sqlapp.activities.MyTripsActivity;
 import com.moutamid.sqlapp.activities.Organizer.Adapter.FileAdapter;
 import com.moutamid.sqlapp.activities.Organizer.Adapter.ImageAdapter;
@@ -104,7 +102,8 @@ public class CreateActivity extends AppCompatActivity {
     };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+protected void onCreate(Bundle savedInstanceState) {
+    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
         dbHelper = new DatabaseHelper(this);
@@ -302,8 +301,8 @@ public class CreateActivity extends AppCompatActivity {
     public void openGallery(View view) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (above13Check()) {
-                shouldShowRequestPermissionRationale(android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
-                shouldShowRequestPermissionRationale(android.Manifest.permission.READ_EXTERNAL_STORAGE);
+                shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE);
                 shouldShowRequestPermissionRationale(Manifest.permission.READ_MEDIA_IMAGES);
                 shouldShowRequestPermissionRationale(Manifest.permission.READ_MEDIA_VIDEO);
                 ActivityCompat.requestPermissions(CreateActivity.this, permissions13, 2);
@@ -312,8 +311,8 @@ public class CreateActivity extends AppCompatActivity {
             }
         } else {
             if (below13Check()) {
-                shouldShowRequestPermissionRationale(android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
-                shouldShowRequestPermissionRationale(android.Manifest.permission.READ_EXTERNAL_STORAGE);
+                shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE);
                 ActivityCompat.requestPermissions(CreateActivity.this, permissions, 2);
             } else {
                 gallery();
@@ -331,8 +330,8 @@ public class CreateActivity extends AppCompatActivity {
     public void openFileManager(View view) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (above13Check()) {
-                shouldShowRequestPermissionRationale(android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
-                shouldShowRequestPermissionRationale(android.Manifest.permission.READ_EXTERNAL_STORAGE);
+                shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE);
                 shouldShowRequestPermissionRationale(Manifest.permission.READ_MEDIA_IMAGES);
                 shouldShowRequestPermissionRationale(Manifest.permission.READ_MEDIA_VIDEO);
                 ActivityCompat.requestPermissions(CreateActivity.this, permissions13, 2);
@@ -341,8 +340,8 @@ public class CreateActivity extends AppCompatActivity {
             }
         } else {
             if (below13Check()) {
-                shouldShowRequestPermissionRationale(android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
-                shouldShowRequestPermissionRationale(android.Manifest.permission.READ_EXTERNAL_STORAGE);
+                shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE);
                 ActivityCompat.requestPermissions(CreateActivity.this, permissions, 2);
             } else {
                 open();

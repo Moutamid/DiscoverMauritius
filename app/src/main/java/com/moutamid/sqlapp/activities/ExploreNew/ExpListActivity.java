@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.app.AppCompatActivity;import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -68,13 +68,13 @@ public class ExpListActivity extends AppCompatActivity {
 
         @NonNull
         @Override
-        public RecyclerViewAdapterMessages.ViewHolderRightMessage onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public ViewHolderRightMessage onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.explore_layout, parent, false);
-            return new RecyclerViewAdapterMessages.ViewHolderRightMessage(view);
+            return new ViewHolderRightMessage(view);
         }
 
         @Override
-        public void onBindViewHolder(@NonNull final RecyclerViewAdapterMessages.ViewHolderRightMessage holder, int p) {
+        public void onBindViewHolder(@NonNull final ViewHolderRightMessage holder, int p) {
             int position = holder.getAdapterPosition();
 
             BrainDataModel brainDataModel = dataList.get(position);

@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.moutamid.sqlapp.R;
@@ -43,7 +42,7 @@ public class SliderAdapterExample extends SliderViewAdapter<SliderAdapterExample
         return mSliderItems.size();
     }
 
-    static class SliderAdapterVH extends SliderViewAdapter.ViewHolder {
+    static class SliderAdapterVH extends ViewHolder {
 
         View itemView;
         ImageView imageViewBackground;

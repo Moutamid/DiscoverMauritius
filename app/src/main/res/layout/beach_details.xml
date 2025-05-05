@@ -904,6 +904,7 @@ Other activities include speedboat rides, water skiing, and paddleboarding. Snor
                     android:textSize="15dp" />
 
                 <TextView
+                    android:id="@+id/premium_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -913,17 +914,16 @@ Other activities include speedboat rides, water skiing, and paddleboarding. Snor
                     android:textSize="15dp" />
             </RelativeLayout>
 
-            <View
+      <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/editBoxFG" />
-
-            <RelativeLayout
+<RelativeLayout
+                android:id="@+id/purchase_lyt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp">
-
 
                 <TextView
                     android:id="@+id/already_purchased"

@@ -8,8 +8,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.fxn.stash.Stash;
 import com.moutamid.sqlapp.R;
@@ -18,7 +19,6 @@ import com.moutamid.sqlapp.activities.ContactUs.ContactUsActivity;
 import com.moutamid.sqlapp.activities.DashboardActivity;
 import com.moutamid.sqlapp.activities.Explore.ExploreActivity;
 import com.moutamid.sqlapp.activities.Iteneraries.ItinerariesActivity;
-import com.moutamid.sqlapp.activities.LoginActivity;
 import com.moutamid.sqlapp.activities.MyTripsActivity;
 import com.moutamid.sqlapp.activities.Organizer.OrganizerActivity;
 import com.moutamid.sqlapp.activities.TravelTipsActivity;
@@ -30,7 +30,8 @@ import java.io.File;
 public class AboutDetailsActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+protected void onCreate(Bundle savedInstanceState) {
+    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_details);
 

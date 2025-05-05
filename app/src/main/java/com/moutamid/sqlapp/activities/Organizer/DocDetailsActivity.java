@@ -5,16 +5,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.app.AppCompatActivity;import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fxn.stash.Stash;
@@ -24,7 +22,6 @@ import com.moutamid.sqlapp.activities.ContactUs.ContactUsActivity;
 import com.moutamid.sqlapp.activities.DashboardActivity;
 import com.moutamid.sqlapp.activities.Explore.ExploreActivity;
 import com.moutamid.sqlapp.activities.Iteneraries.ItinerariesActivity;
-import com.moutamid.sqlapp.activities.LoginActivity;
 import com.moutamid.sqlapp.activities.MyTripsActivity;
 import com.moutamid.sqlapp.activities.Organizer.Adapter.ViewFileAdapter;
 import com.moutamid.sqlapp.activities.Organizer.Adapter.ViewImageAdapter;
@@ -61,7 +58,8 @@ public class DocDetailsActivity extends AppCompatActivity {
     LinearLayout number_layout, issue_layout, expiry_layout, issued_by_layout, country_layout, more_layout;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+protected void onCreate(Bundle savedInstanceState) {
+    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doc_details);
         Utils.loginBtnMenuListener(this);

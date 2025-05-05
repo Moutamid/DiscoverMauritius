@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.fxn.stash.Stash;
 import com.moutamid.sqlapp.R;
 import com.moutamid.sqlapp.databinding.ActivityMapBinding;
@@ -64,7 +64,8 @@ public class MapActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+protected void onCreate(Bundle savedInstanceState) {
+    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         AndroidGraphicFactory.createInstance(getApplicationContext());
         b = ActivityMapBinding.inflate(getLayoutInflater());

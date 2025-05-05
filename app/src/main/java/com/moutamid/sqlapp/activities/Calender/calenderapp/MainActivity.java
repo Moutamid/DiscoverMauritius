@@ -1,7 +1,5 @@
 package com.moutamid.sqlapp.activities.Calender.calenderapp;
 
-import static com.moutamid.sqlapp.activities.Calender.calenderapp.weekview.WeekView.mCurrentScrollDirection;
-
 import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -31,7 +29,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,8 +36,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.app.AppCompatActivity;import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.res.ResourcesCompat;
@@ -74,9 +71,7 @@ import com.moutamid.sqlapp.activities.ContactUs.ContactUsActivity;
 import com.moutamid.sqlapp.activities.DashboardActivity;
 import com.moutamid.sqlapp.activities.Explore.ExploreActivity;
 import com.moutamid.sqlapp.activities.Iteneraries.ItinerariesActivity;
-import com.moutamid.sqlapp.activities.LoginActivity;
 import com.moutamid.sqlapp.activities.MyTripsActivity;
-import com.moutamid.sqlapp.activities.Organizer.CreateActivity;
 import com.moutamid.sqlapp.activities.Organizer.Fragment.DocumentFragment;
 import com.moutamid.sqlapp.activities.Organizer.OrganizerActivity;
 import com.moutamid.sqlapp.activities.TravelTipsActivity;
@@ -198,19 +193,20 @@ public class MainActivity extends AppCompatActivity
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+protected void onCreate(Bundle savedInstanceState) {
+    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_calender);
         checkApp(MainActivity.this);
 
         Utils.loginBtnMenuListener(this);
-        day_buttons = findViewById(com.moutamid.sqlapp.R.id.button_days);
-        week_layout = findViewById(com.moutamid.sqlapp.R.id.week_layout);
-        month_view = findViewById(com.moutamid.sqlapp.R.id.month_view);
-        current_date = findViewById(com.moutamid.sqlapp.R.id.current_date);
-        calender_date = findViewById(com.moutamid.sqlapp.R.id.calender_date);
-        recyclerView = findViewById(com.moutamid.sqlapp.R.id.recyclerView);
+        day_buttons = findViewById(R.id.button_days);
+        week_layout = findViewById(R.id.week_layout);
+        month_view = findViewById(R.id.month_view);
+        current_date = findViewById(R.id.current_date);
+        calender_date = findViewById(R.id.calender_date);
+        recyclerView = findViewById(R.id.recyclerView);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         replaceFragment(new DocumentFragment());
         Stash.put("first_time_right", "yes");
@@ -239,28 +235,28 @@ public class MainActivity extends AppCompatActivity
         });
 
 
-        range = findViewById(com.moutamid.sqlapp.R.id.range);
-        dateRangeTextView = findViewById(com.moutamid.sqlapp.R.id.dateRangeTextView);
-        recyclerView_week = findViewById(com.moutamid.sqlapp.R.id.recyclerView_week);
-        previousButton = findViewById(com.moutamid.sqlapp.R.id.previousButton);
-        nextButton = findViewById(com.moutamid.sqlapp.R.id.nextButton);
+        range = findViewById(R.id.range);
+        dateRangeTextView = findViewById(R.id.dateRangeTextView);
+        recyclerView_week = findViewById(R.id.recyclerView_week);
+        previousButton = findViewById(R.id.previousButton);
+        nextButton = findViewById(R.id.nextButton);
         updateDates(currentDate);
-        mWeekView = (WeekView) findViewById(com.moutamid.sqlapp.R.id.weekView);
+        mWeekView = (WeekView) findViewById(R.id.weekView);
         dbHelper = new EventDbHelper(this);
-        backword_arrow = findViewById(com.moutamid.sqlapp.R.id.backword_arrow);
-        forward_arrow = findViewById(com.moutamid.sqlapp.R.id.forward_arrow);
-        title = findViewById(com.moutamid.sqlapp.R.id.title);
-        dayTextView = findViewById(com.moutamid.sqlapp.R.id.day);
-        weekTextView = findViewById(com.moutamid.sqlapp.R.id.week);
-        monthTextView = findViewById(com.moutamid.sqlapp.R.id.month);
-        dayPressedTextView = findViewById(com.moutamid.sqlapp.R.id.day_pressed);
-        weekPressedTextView = findViewById(com.moutamid.sqlapp.R.id.week_pressed);
-        monthPressedTextView = findViewById(com.moutamid.sqlapp.R.id.month_pressed);
-        range_month = findViewById(com.moutamid.sqlapp.R.id.range_month);
-        dateRangeTextView_month = findViewById(com.moutamid.sqlapp.R.id.dateRangeTextView_month);
-        recyclerView_month = findViewById(com.moutamid.sqlapp.R.id.recyclerView_month);
-        previousButton_month = findViewById(com.moutamid.sqlapp.R.id.previousButton_month);
-        nextButton_month = findViewById(com.moutamid.sqlapp.R.id.nextButton_month);
+        backword_arrow = findViewById(R.id.backword_arrow);
+        forward_arrow = findViewById(R.id.forward_arrow);
+        title = findViewById(R.id.title);
+        dayTextView = findViewById(R.id.day);
+        weekTextView = findViewById(R.id.week);
+        monthTextView = findViewById(R.id.month);
+        dayPressedTextView = findViewById(R.id.day_pressed);
+        weekPressedTextView = findViewById(R.id.week_pressed);
+        monthPressedTextView = findViewById(R.id.month_pressed);
+        range_month = findViewById(R.id.range_month);
+        dateRangeTextView_month = findViewById(R.id.dateRangeTextView_month);
+        recyclerView_month = findViewById(R.id.recyclerView_month);
+        previousButton_month = findViewById(R.id.previousButton_month);
+        nextButton_month = findViewById(R.id.nextButton_month);
         updateDates_month(currentDate_month);
         MonthAdapter adapter_month = new MonthAdapter(MainActivity.this, dates_month, getDate_month(currentDate_month), search_dates_month, search_dates_local_month);
         recyclerView_month.setAdapter(adapter_month);
@@ -446,7 +442,7 @@ public class MainActivity extends AppCompatActivity
         });
 
 
-        weekviewcontainer = findViewById(com.moutamid.sqlapp.R.id.weekViewcontainer);
+        weekviewcontainer = findViewById(R.id.weekViewcontainer);
         dayTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -493,11 +489,11 @@ public class MainActivity extends AppCompatActivity
         eventalllist = new ArrayList<>();
         indextrack = new HashMap<>();
         dupindextrack = new HashMap<>();
-        mAppBar = findViewById(com.moutamid.sqlapp.R.id.app_bar);
-        calendarView = findViewById(com.moutamid.sqlapp.R.id.calander);
+        mAppBar = findViewById(R.id.app_bar);
+        calendarView = findViewById(R.id.calander);
         calendarView.setPadding(0, getStatusBarHeight(), 0, 0);
-        mNestedView = findViewById(com.moutamid.sqlapp.R.id.nestedView);
-        monthviewpager = findViewById(com.moutamid.sqlapp.R.id.monthviewpager);
+        mNestedView = findViewById(R.id.nestedView);
+        monthviewpager = findViewById(R.id.monthviewpager);
         monthviewpager.setOffscreenPageLimit(1);
         monthviewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -543,7 +539,7 @@ public class MainActivity extends AppCompatActivity
 //        EventBus.getDefault().register(this);
 
 
-        monthname = findViewById(com.moutamid.sqlapp.R.id.monthname);
+        monthname = findViewById(R.id.monthname);
         calendarView.setMonthChangeListner(new MonthChangeListner() {
             @Override
             public void onmonthChange(MonthModel monthModel) {
@@ -595,7 +591,7 @@ public class MainActivity extends AppCompatActivity
             }
 
 
-            recyclerView = findViewById(com.moutamid.sqlapp.R.id.recyclerView);
+            recyclerView = findViewById(R.id.recyclerView);
             recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
             eventAdapter = new EventAdapter(MainActivity.this, eventList);
             recyclerView.setAdapter(eventAdapter);
@@ -665,10 +661,10 @@ public class MainActivity extends AppCompatActivity
             mAppBar.setExpanded(false, false);
 
         }
-        toolbar = findViewById(com.moutamid.sqlapp.R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         toolbar.setPadding(0, getStatusBarHeight(), 0, 0);
 //        expandCollapse = findViewById(R.id.expandCollapseButton);
-        mArrowImageView = findViewById(com.moutamid.sqlapp.R.id.arrowImageView);
+        mArrowImageView = findViewById(R.id.arrowImageView);
         if (monthviewpager.getVisibility() == View.VISIBLE) {
 //            CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) mAppBar.getLayoutParams();
 //            ((MyAppBarBehavior) layoutParams.getBehavior()).setScrollBehavior(false);
@@ -741,7 +737,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        findViewById(com.moutamid.sqlapp.R.id.backsupport).setOnClickListener(
+        findViewById(R.id.backsupport).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -755,8 +751,8 @@ public class MainActivity extends AppCompatActivity
 
                     }
                 });
-        mWeekView.setfont(ResourcesCompat.getFont(this, com.moutamid.sqlapp.R.font.googlesans_regular), 0);
-        mWeekView.setfont(ResourcesCompat.getFont(this, com.moutamid.sqlapp.R.font.googlesansmed), 1);
+        mWeekView.setfont(ResourcesCompat.getFont(this, R.font.googlesans_regular), 0);
+        mWeekView.setfont(ResourcesCompat.getFont(this, R.font.googlesansmed), 1);
         mWeekView.setOnEventClickListener(this);
         mWeekView.setMonthChangeListener(this);
         mWeekView.setEventLongPressListener(this);
@@ -1181,13 +1177,13 @@ public class MainActivity extends AppCompatActivity
 
         if (event.getColor() != 0) {
             GradientDrawable shape = new GradientDrawable();
-            shape.setCornerRadius(getResources().getDimensionPixelSize(com.moutamid.sqlapp.R.dimen.fourdp));
+            shape.setCornerRadius(getResources().getDimensionPixelSize(R.dimen.fourdp));
             mycolor = event.getColor();
             shape.setColor(mycolor);
 
         } else {
             GradientDrawable shape = new GradientDrawable();
-            shape.setCornerRadius(getResources().getDimensionPixelSize(com.moutamid.sqlapp.R.dimen.fourdp));
+            shape.setCornerRadius(getResources().getDimensionPixelSize(R.dimen.fourdp));
             mycolor = Color.parseColor("#009688");
             shape.setColor(mycolor);
 
@@ -1311,7 +1307,7 @@ public class MainActivity extends AppCompatActivity
         @NonNull
         @Override
         public EventViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(context).inflate(com.moutamid.sqlapp.R.layout.item_event, parent, false);
+            View view = LayoutInflater.from(context).inflate(R.layout.item_event, parent, false);
             return new EventViewHolder(view);
         }
 
@@ -1332,7 +1328,7 @@ public class MainActivity extends AppCompatActivity
 
             public EventViewHolder(@NonNull View itemView) {
                 super(itemView);
-                textViewTitle = itemView.findViewById(com.moutamid.sqlapp.R.id.event_name);
+                textViewTitle = itemView.findViewById(R.id.event_name);
             }
 
             public void bind(EventInfo event) {

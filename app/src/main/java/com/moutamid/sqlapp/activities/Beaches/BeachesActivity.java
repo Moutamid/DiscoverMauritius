@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.bumptech.glide.Glide;
 import com.moutamid.sqlapp.R;
 import com.moutamid.sqlapp.model.BeachItem;
@@ -31,7 +31,8 @@ public class BeachesActivity extends AppCompatActivity {
     double[] itemLongitudesWest = {57.3636901, 57.3614249, 57.3125745, 57.3778870}; // Beaches West longitudes
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+protected void onCreate(Bundle savedInstanceState) {
+    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beaches);
         ImageView coin_de_mire_10, le_morne_brabant, gris_gris_4, ile_aux_cerfs_island_2, belle_mare_1;

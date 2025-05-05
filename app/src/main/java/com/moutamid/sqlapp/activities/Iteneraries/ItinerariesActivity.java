@@ -1,9 +1,8 @@
 package com.moutamid.sqlapp.activities.Iteneraries;
 
-import static com.moutamid.sqlapp.model.DatabaseHelper.TABLE_NAME;
+import static android.view.View.GONE;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -17,8 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.android.billingclient.api.AcknowledgePurchaseParams;
 import com.android.billingclient.api.BillingClient;
 import com.android.billingclient.api.BillingClientStateListener;
@@ -27,10 +26,13 @@ import com.android.billingclient.api.BillingResult;
 import com.android.billingclient.api.ProductDetails;
 import com.android.billingclient.api.ProductDetailsResponseListener;
 import com.android.billingclient.api.Purchase;
+import com.android.billingclient.api.PurchasesUpdatedListener;
 import com.android.billingclient.api.QueryProductDetailsParams;
 import com.android.billingclient.api.QueryPurchasesParams;
 import com.bumptech.glide.Glide;
 import com.fxn.stash.Stash;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.moutamid.sqlapp.R;
 import com.moutamid.sqlapp.activities.AppInfo.AppInfoActivity;
 import com.moutamid.sqlapp.activities.ContactUs.ContactUsActivity;
@@ -44,7 +46,6 @@ import com.moutamid.sqlapp.activities.TravelTipsActivity;
 import com.moutamid.sqlapp.adapter.ItenerariesAdapter;
 import com.moutamid.sqlapp.helper.Constants;
 import com.moutamid.sqlapp.helper.Utils;
-import com.moutamid.sqlapp.model.DatabaseHelper;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
@@ -61,8 +62,7 @@ public class ItinerariesActivity extends AppCompatActivity implements View.OnCli
 
     ImageView image, close, close_faq;
     public static TextView faq_txt, text1, text2;
-    private static String PRODUCT_PREMIUM = "lifetime";
-    private BillingClient billingClient;
+
     private static final int BUTTON_DAY_1 = 1;
     private static final int BUTTON_DAY_2 = 2;
     private static final int BUTTON_DAY_3 = 3;
@@ -84,15 +84,50 @@ String fullPath;
     RelativeLayout tab_layout2;
     public static TextView total_stop, time, distance;
     EditText search;
+    private BillingClient billingClient;
+    private final PurchasesUpdatedListener purchasesUpdatedListener = (billingResult, purchases) -> {
+        if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK && purchases != null) {
+            for (Purchase purchase : purchases) {
+                if (purchase.getProducts().contains(Constants.PRODUCT_PREMIUM)) {
+                    // Grant the user access
+                    Toast.makeText(this, "Lifetime purchase successful!", Toast.LENGTH_SHORT).show();
+                    handlePurchase(purchase);
+                }
+            }
+        } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.USER_CANCELED) {
+            Toast.makeText(this, "Purchase canceled", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Error: " + billingResult.getDebugMessage(), Toast.LENGTH_SHORT).show();
+        }
+    };
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+protected void onCreate(Bundle savedInstanceState) {
+    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_itineraries);
 
         premium();
         Utils.loginBtnMenuListener(this);
-        total_stop = findViewById(R.id.total_stop);
+        billingClient = BillingClient.newBuilder(this)
+                .setListener(purchasesUpdatedListener)
+                .enablePendingPurchases()
+                .build();
+
+        billingClient.startConnection(new BillingClientStateListener() {
+            @Override
+            public void onBillingSetupFinished(BillingResult billingResult) {
+                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                    Toast.makeText(ItinerariesActivity.this, "Billing connected", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onBillingServiceDisconnected() {
+                Toast.makeText(ItinerariesActivity.this, "Billing disconnected", Toast.LENGTH_SHORT).show();
+            }
+        });  total_stop = findViewById(R.id.total_stop);
         search = findViewById(R.id.search);
         time = findViewById(R.id.time);
         distance = findViewById(R.id.distance);
@@ -175,7 +210,7 @@ String fullPath;
 
         // Initialize views
         resetButtons();
-        tab_layout2.setVisibility(View.GONE);
+        tab_layout2.setVisibility(GONE);
         buttonDay1.setVisibility(View.INVISIBLE);
         view1.setVisibility(View.INVISIBLE);
         pressButtonDay1.setVisibility(View.VISIBLE);
@@ -296,7 +331,7 @@ String fullPath;
             pressButtonDay1.setVisibility(View.VISIBLE);
             pressView1.setVisibility(View.VISIBLE);
             showSubButtons(1);
-            tab_layout2.setVisibility(View.GONE);
+            tab_layout2.setVisibility(GONE);
             handle_sub_visibility(0, 0);
 
         } else if (buttonId == R.id.buttonDay2) {
@@ -429,23 +464,23 @@ String fullPath;
                 subview1.setVisibility(View.INVISIBLE);
                 subbuttonDay2.setVisibility(View.VISIBLE);
                 subview2.setVisibility(View.VISIBLE);
-                subbuttonDay3.setVisibility(View.GONE);
-                subview3.setVisibility(View.GONE);
-                subbuttonDay4.setVisibility(View.GONE);
-                subview4.setVisibility(View.GONE);
-                subbuttonDay5.setVisibility(View.GONE);
-                subview5.setVisibility(View.GONE);
+                subbuttonDay3.setVisibility(GONE);
+                subview3.setVisibility(GONE);
+                subbuttonDay4.setVisibility(GONE);
+                subview4.setVisibility(GONE);
+                subbuttonDay5.setVisibility(GONE);
+                subview5.setVisibility(GONE);
 
                 subpressbuttonDay1.setVisibility(View.VISIBLE);
                 subpressview1.setVisibility(View.VISIBLE);
                 subpressbuttonDay2.setVisibility(View.INVISIBLE);
                 subpressview2.setVisibility(View.INVISIBLE);
-                subpressbuttonDay3.setVisibility(View.GONE);
-                subpressview3.setVisibility(View.GONE);
-                subpressbuttonDay4.setVisibility(View.GONE);
-                subpressview4.setVisibility(View.GONE);
-                subpressbuttonDay5.setVisibility(View.GONE);
-                subpressview5.setVisibility(View.GONE);
+                subpressbuttonDay3.setVisibility(GONE);
+                subpressview3.setVisibility(GONE);
+                subpressbuttonDay4.setVisibility(GONE);
+                subpressview4.setVisibility(GONE);
+                subpressbuttonDay5.setVisibility(GONE);
+                subpressview5.setVisibility(GONE);
                 break;
             case BUTTON_DAY_3:
                 BUTTON_DAY = 3;
@@ -456,10 +491,10 @@ String fullPath;
                 subview2.setVisibility(View.VISIBLE);
                 subbuttonDay3.setVisibility(View.VISIBLE);
                 subview3.setVisibility(View.VISIBLE);
-                subbuttonDay4.setVisibility(View.GONE);
-                subview4.setVisibility(View.GONE);
-                subbuttonDay5.setVisibility(View.GONE);
-                subview5.setVisibility(View.GONE);
+                subbuttonDay4.setVisibility(GONE);
+                subview4.setVisibility(GONE);
+                subbuttonDay5.setVisibility(GONE);
+                subview5.setVisibility(GONE);
 
                 subpressbuttonDay1.setVisibility(View.VISIBLE);
                 subpressview1.setVisibility(View.VISIBLE);
@@ -467,10 +502,10 @@ String fullPath;
                 subpressview2.setVisibility(View.INVISIBLE);
                 subpressbuttonDay3.setVisibility(View.INVISIBLE);
                 subpressview3.setVisibility(View.INVISIBLE);
-                subpressbuttonDay4.setVisibility(View.GONE);
-                subpressview4.setVisibility(View.GONE);
-                subpressbuttonDay5.setVisibility(View.GONE);
-                subpressview5.setVisibility(View.GONE);
+                subpressbuttonDay4.setVisibility(GONE);
+                subpressview4.setVisibility(GONE);
+                subpressbuttonDay5.setVisibility(GONE);
+                subpressview5.setVisibility(GONE);
                 break;
             case BUTTON_DAY_4:
                 BUTTON_DAY = 4;
@@ -483,8 +518,8 @@ String fullPath;
                 subview3.setVisibility(View.VISIBLE);
                 subbuttonDay4.setVisibility(View.VISIBLE);
                 subview4.setVisibility(View.VISIBLE);
-                subbuttonDay5.setVisibility(View.GONE);
-                subview5.setVisibility(View.GONE);
+                subbuttonDay5.setVisibility(GONE);
+                subview5.setVisibility(GONE);
 
                 subpressbuttonDay1.setVisibility(View.VISIBLE);
                 subpressview1.setVisibility(View.VISIBLE);
@@ -494,8 +529,8 @@ String fullPath;
                 subpressview3.setVisibility(View.INVISIBLE);
                 subpressbuttonDay4.setVisibility(View.INVISIBLE);
                 subpressview4.setVisibility(View.INVISIBLE);
-                subpressbuttonDay5.setVisibility(View.GONE);
-                subpressview5.setVisibility(View.GONE);
+                subpressbuttonDay5.setVisibility(GONE);
+                subpressview5.setVisibility(GONE);
                 break;
             case BUTTON_DAY_5:
                 BUTTON_DAY = 5;
@@ -532,7 +567,7 @@ String fullPath;
         String[] itemName = new String[0];
         if (main_day == 0 && sub_day == 0) {
             Stash.put("day", "day1");
-            tab_layout2.setVisibility(View.GONE);
+            tab_layout2.setVisibility(GONE);
             itemTexts = new String[]{
                     "Le Caudan Waterfront", //1
                     "Aapravasi Ghat", //2
@@ -605,23 +640,23 @@ String fullPath;
             subview1.setVisibility(View.INVISIBLE);
             subbuttonDay2.setVisibility(View.VISIBLE);
             subview2.setVisibility(View.VISIBLE);
-            subbuttonDay3.setVisibility(View.GONE);
-            subview3.setVisibility(View.GONE);
-            subbuttonDay4.setVisibility(View.GONE);
-            subview4.setVisibility(View.GONE);
-            subbuttonDay5.setVisibility(View.GONE);
-            subview5.setVisibility(View.GONE);
+            subbuttonDay3.setVisibility(GONE);
+            subview3.setVisibility(GONE);
+            subbuttonDay4.setVisibility(GONE);
+            subview4.setVisibility(GONE);
+            subbuttonDay5.setVisibility(GONE);
+            subview5.setVisibility(GONE);
 
             subpressbuttonDay1.setVisibility(View.VISIBLE);
             subpressview1.setVisibility(View.VISIBLE);
             subpressbuttonDay2.setVisibility(View.INVISIBLE);
             subpressview2.setVisibility(View.INVISIBLE);
-            subpressbuttonDay3.setVisibility(View.GONE);
-            subpressview3.setVisibility(View.GONE);
-            subpressbuttonDay4.setVisibility(View.GONE);
-            subpressview4.setVisibility(View.GONE);
-            subpressbuttonDay5.setVisibility(View.GONE);
-            subpressview5.setVisibility(View.GONE);
+            subpressbuttonDay3.setVisibility(GONE);
+            subpressview3.setVisibility(GONE);
+            subpressbuttonDay4.setVisibility(GONE);
+            subpressview4.setVisibility(GONE);
+            subpressbuttonDay5.setVisibility(GONE);
+            subpressview5.setVisibility(GONE);
             itemTexts = new String[]{
                     "SSR Botanical Garden", //1
                     "L’Aventure du Sucre Museum", //2
@@ -672,22 +707,22 @@ String fullPath;
             subview1.setVisibility(View.VISIBLE);
             subbuttonDay2.setVisibility(View.INVISIBLE);
             subview2.setVisibility(View.INVISIBLE);
-            subbuttonDay3.setVisibility(View.GONE);
-            subview3.setVisibility(View.GONE);
-            subbuttonDay4.setVisibility(View.GONE);
-            subview4.setVisibility(View.GONE);
-            subbuttonDay5.setVisibility(View.GONE);
-            subview5.setVisibility(View.GONE);
+            subbuttonDay3.setVisibility(GONE);
+            subview3.setVisibility(GONE);
+            subbuttonDay4.setVisibility(GONE);
+            subview4.setVisibility(GONE);
+            subbuttonDay5.setVisibility(GONE);
+            subview5.setVisibility(GONE);
             subpressbuttonDay1.setVisibility(View.INVISIBLE);
             subpressview1.setVisibility(View.INVISIBLE);
             subpressbuttonDay2.setVisibility(View.VISIBLE);
             subpressview2.setVisibility(View.VISIBLE);
-            subpressbuttonDay3.setVisibility(View.GONE);
-            subpressview3.setVisibility(View.GONE);
-            subpressbuttonDay4.setVisibility(View.GONE);
-            subpressview4.setVisibility(View.GONE);
-            subpressbuttonDay5.setVisibility(View.GONE);
-            subpressview5.setVisibility(View.GONE);
+            subpressbuttonDay3.setVisibility(GONE);
+            subpressview3.setVisibility(GONE);
+            subpressbuttonDay4.setVisibility(GONE);
+            subpressview4.setVisibility(GONE);
+            subpressbuttonDay5.setVisibility(GONE);
+            subpressview5.setVisibility(GONE);
             itemTexts = new String[]{
                     "Trou aux Cerfs", //1
                     "Grand Bassin", //2
@@ -732,20 +767,20 @@ String fullPath;
             subview2.setVisibility(View.VISIBLE);
             subbuttonDay3.setVisibility(View.VISIBLE);
             subview3.setVisibility(View.VISIBLE);
-            subbuttonDay4.setVisibility(View.GONE);
-            subview4.setVisibility(View.GONE);
-            subbuttonDay5.setVisibility(View.GONE);
-            subview5.setVisibility(View.GONE);
+            subbuttonDay4.setVisibility(GONE);
+            subview4.setVisibility(GONE);
+            subbuttonDay5.setVisibility(GONE);
+            subview5.setVisibility(GONE);
             subpressbuttonDay1.setVisibility(View.VISIBLE);
             subpressview1.setVisibility(View.VISIBLE);
             subpressbuttonDay2.setVisibility(View.INVISIBLE);
             subpressview2.setVisibility(View.INVISIBLE);
             subpressbuttonDay3.setVisibility(View.INVISIBLE);
             subpressview3.setVisibility(View.INVISIBLE);
-            subpressbuttonDay4.setVisibility(View.GONE);
-            subpressview4.setVisibility(View.GONE);
-            subpressbuttonDay5.setVisibility(View.GONE);
-            subpressview5.setVisibility(View.GONE);
+            subpressbuttonDay4.setVisibility(GONE);
+            subpressview4.setVisibility(GONE);
+            subpressbuttonDay5.setVisibility(GONE);
+            subpressview5.setVisibility(GONE);
             itemTexts = new String[]{"SSR Botanical Garden", "L’Aventure du Sucre Museum", "Chateau de Labourdonnais", "Le Caudan Waterfront", "Aapravasi Ghat", "Blue Penny Museum"};
             itemName1 = new String[]{"North • 2 hours", "North • 2 hours", "North • 2 hours", "North • 2 hours", "North • 1 hour", "North • 1 hour"};
            itemImages = new String[]{
@@ -786,20 +821,20 @@ String fullPath;
             subview2.setVisibility(View.INVISIBLE);
             subbuttonDay3.setVisibility(View.VISIBLE);
             subview3.setVisibility(View.VISIBLE);
-            subbuttonDay4.setVisibility(View.GONE);
-            subview4.setVisibility(View.GONE);
-            subbuttonDay5.setVisibility(View.GONE);
-            subview5.setVisibility(View.GONE);
+            subbuttonDay4.setVisibility(GONE);
+            subview4.setVisibility(GONE);
+            subbuttonDay5.setVisibility(GONE);
+            subview5.setVisibility(GONE);
             subpressbuttonDay1.setVisibility(View.INVISIBLE);
             subpressview1.setVisibility(View.INVISIBLE);
             subpressbuttonDay2.setVisibility(View.VISIBLE);
             subpressview2.setVisibility(View.VISIBLE);
             subpressbuttonDay3.setVisibility(View.INVISIBLE);
             subpressview3.setVisibility(View.INVISIBLE);
-            subpressbuttonDay4.setVisibility(View.GONE);
-            subpressview4.setVisibility(View.GONE);
-            subpressbuttonDay5.setVisibility(View.GONE);
-            subpressview5.setVisibility(View.GONE);
+            subpressbuttonDay4.setVisibility(GONE);
+            subpressview4.setVisibility(GONE);
+            subpressbuttonDay5.setVisibility(GONE);
+            subpressview5.setVisibility(GONE);
             itemTexts = new String[]{
                     "Bois Cheri Tea Museum", //1
                     "La Vanille Nature Park ", //2
@@ -834,20 +869,20 @@ String fullPath;
             subview2.setVisibility(View.VISIBLE);
             subbuttonDay3.setVisibility(View.INVISIBLE);
             subview3.setVisibility(View.INVISIBLE);
-            subbuttonDay4.setVisibility(View.GONE);
-            subview4.setVisibility(View.GONE);
-            subbuttonDay5.setVisibility(View.GONE);
-            subview5.setVisibility(View.GONE);
+            subbuttonDay4.setVisibility(GONE);
+            subview4.setVisibility(GONE);
+            subbuttonDay5.setVisibility(GONE);
+            subview5.setVisibility(GONE);
             subpressbuttonDay1.setVisibility(View.INVISIBLE);
             subpressview1.setVisibility(View.INVISIBLE);
             subpressbuttonDay2.setVisibility(View.INVISIBLE);
             subpressview2.setVisibility(View.INVISIBLE);
             subpressbuttonDay3.setVisibility(View.VISIBLE);
             subpressview3.setVisibility(View.VISIBLE);
-            subpressbuttonDay4.setVisibility(View.GONE);
-            subpressview4.setVisibility(View.GONE);
-            subpressbuttonDay5.setVisibility(View.GONE);
-            subpressview5.setVisibility(View.GONE);
+            subpressbuttonDay4.setVisibility(GONE);
+            subpressview4.setVisibility(GONE);
+            subpressbuttonDay5.setVisibility(GONE);
+            subpressview5.setVisibility(GONE);
             itemTexts = new String[]{
                     "Tamarin Bay",//1
                     "Trou aux Cerfs",//2
@@ -895,8 +930,8 @@ String fullPath;
             subview3.setVisibility(View.VISIBLE);
             subbuttonDay4.setVisibility(View.VISIBLE);
             subview4.setVisibility(View.VISIBLE);
-            subbuttonDay5.setVisibility(View.GONE);
-            subview5.setVisibility(View.GONE);
+            subbuttonDay5.setVisibility(GONE);
+            subview5.setVisibility(GONE);
             subpressbuttonDay1.setVisibility(View.VISIBLE);
             subpressview1.setVisibility(View.VISIBLE);
             subpressbuttonDay2.setVisibility(View.INVISIBLE);
@@ -905,8 +940,8 @@ String fullPath;
             subpressview3.setVisibility(View.INVISIBLE);
             subpressbuttonDay4.setVisibility(View.INVISIBLE);
             subpressview4.setVisibility(View.INVISIBLE);
-            subpressbuttonDay5.setVisibility(View.GONE);
-            subpressview5.setVisibility(View.GONE);
+            subpressbuttonDay5.setVisibility(GONE);
+            subpressview5.setVisibility(GONE);
             itemTexts = new String[]{"SSR Botanical Garden", "L’Aventure du Sucre Museum", "Chateau de Labourdonnais", "Le Caudan Waterfront", "Aapravasi Ghat", "Blue Penny Museum"};
             itemName = new String[]{"Admission Entrance Fee", "Admission Entrance Fee", "Admission Entrance Free", "Admission Fee", "Admission Entrance Fee", "Admission Entrance Fee"};
             itemName1 = new String[]{"North • 2 hours", "North • 2 hours", "North • 2 hours", "North • 2 hours", "North • 1 hours", "North • 1 hours"};
@@ -949,8 +984,8 @@ String fullPath;
             subview3.setVisibility(View.VISIBLE);
             subbuttonDay4.setVisibility(View.VISIBLE);
             subview4.setVisibility(View.VISIBLE);
-            subbuttonDay5.setVisibility(View.GONE);
-            subview5.setVisibility(View.GONE);
+            subbuttonDay5.setVisibility(GONE);
+            subview5.setVisibility(GONE);
             subpressbuttonDay1.setVisibility(View.INVISIBLE);
             subpressview1.setVisibility(View.INVISIBLE);
             subpressbuttonDay2.setVisibility(View.VISIBLE);
@@ -959,8 +994,8 @@ String fullPath;
             subpressview3.setVisibility(View.INVISIBLE);
             subpressbuttonDay4.setVisibility(View.INVISIBLE);
             subpressview4.setVisibility(View.INVISIBLE);
-            subpressbuttonDay5.setVisibility(View.GONE);
-            subpressview5.setVisibility(View.GONE);
+            subpressbuttonDay5.setVisibility(GONE);
+            subpressview5.setVisibility(GONE);
             itemTexts = new String[]{"Ile aux Cerfs Beach"};
             itemName = new String[]{"Admission Catamaran Fee"};
             itemName1 = new String[]{"East • Full Day"};
@@ -986,8 +1021,8 @@ String fullPath;
             subview3.setVisibility(View.INVISIBLE);
             subbuttonDay4.setVisibility(View.VISIBLE);
             subview4.setVisibility(View.VISIBLE);
-            subbuttonDay5.setVisibility(View.GONE);
-            subview5.setVisibility(View.GONE);
+            subbuttonDay5.setVisibility(GONE);
+            subview5.setVisibility(GONE);
             subpressbuttonDay1.setVisibility(View.INVISIBLE);
             subpressview1.setVisibility(View.INVISIBLE);
             subpressbuttonDay2.setVisibility(View.INVISIBLE);
@@ -996,8 +1031,8 @@ String fullPath;
             subpressview3.setVisibility(View.VISIBLE);
             subpressbuttonDay4.setVisibility(View.INVISIBLE);
             subpressview4.setVisibility(View.INVISIBLE);
-            subpressbuttonDay5.setVisibility(View.GONE);
-            subpressview5.setVisibility(View.GONE);
+            subpressbuttonDay5.setVisibility(GONE);
+            subpressview5.setVisibility(GONE);
             itemTexts = new String[]{
                     "Casela Adventure Park",//1
                     "Trou aux Cerfs",//2
@@ -1046,8 +1081,8 @@ String fullPath;
             subview3.setVisibility(View.VISIBLE);
             subbuttonDay4.setVisibility(View.INVISIBLE);
             subview4.setVisibility(View.INVISIBLE);
-            subbuttonDay5.setVisibility(View.GONE);
-            subview5.setVisibility(View.GONE);
+            subbuttonDay5.setVisibility(GONE);
+            subview5.setVisibility(GONE);
             subpressbuttonDay1.setVisibility(View.INVISIBLE);
             subpressview1.setVisibility(View.INVISIBLE);
             subpressbuttonDay2.setVisibility(View.INVISIBLE);
@@ -1056,8 +1091,8 @@ String fullPath;
             subpressview3.setVisibility(View.INVISIBLE);
             subpressbuttonDay4.setVisibility(View.VISIBLE);
             subpressview4.setVisibility(View.VISIBLE);
-            subpressbuttonDay5.setVisibility(View.GONE);
-            subpressview5.setVisibility(View.GONE);
+            subpressbuttonDay5.setVisibility(GONE);
+            subpressview5.setVisibility(GONE);
             itemTexts = new String[]{
                     "Eau Bleu Waterfall", //1
                     "Pont Naturel Bridge",//2
@@ -1372,15 +1407,15 @@ String fullPath;
         more_layout = findViewById(R.id.more_layout);
         ImageView menu = findViewById(R.id.menu);
         ImageView close = findViewById(R.id.closebtn);
-        menu.setVisibility(View.GONE);
+        menu.setVisibility(GONE);
         more_layout.setVisibility(View.VISIBLE);
         close.setVisibility(View.VISIBLE);
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 menu.setVisibility(View.VISIBLE);
-                more_layout.setVisibility(View.GONE);
-                close.setVisibility(View.GONE);
+                more_layout.setVisibility(GONE);
+                close.setVisibility(GONE);
             }
         });
     }
@@ -1425,27 +1460,12 @@ String fullPath;
         startActivity(new Intent(ItinerariesActivity.this, DashboardActivity.class));
 
     }
-
     public void premium() {
-        TextView already_purchased;
+        TextView already_purchased, premium_amount;
         already_purchased = findViewById(R.id.already_purchased);
+        premium_amount = findViewById(R.id.premium_amount);
         restore_purchase = findViewById(R.id.restore_purchase);
         lifetime_premium = findViewById(R.id.lifetime_premium);
-        lifetime_premium.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!Stash.getBoolean(Constants.IS_LOGGED_IN, false)) {
-                    premium_layout.setVisibility(View.GONE);
-                    faq_layout.setVisibility(View.GONE);
-                    Toast.makeText(ItinerariesActivity.this, "Create account to become a premium user", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(ItinerariesActivity.this, CreateAccountActivity.class));
-                } else {
-                    GetSubPurchases();
-                }
-
-
-            }
-        });
         premium_layout = findViewById(R.id.premium_layout);
         faq_layout = findViewById(R.id.faq_layout);
         close = findViewById(R.id.close);
@@ -1454,35 +1474,37 @@ String fullPath;
         faq_txt = findViewById(R.id.faq_txt);
         text1 = findViewById(R.id.text111);
         text2 = findViewById(R.id.text112);
+        RelativeLayout purchase_lyt = findViewById(R.id.purchase_lyt);
+        premium_amount.setText(Stash.getString(Constants.PRODUCT_PREMIUM_VALUE));
+        purchase_lyt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!Stash.getBoolean(Constants.IS_LOGGED_IN, false)) {
+                    premium_layout.setVisibility(GONE);
+                    faq_layout.setVisibility(GONE);
+                    Toast.makeText(ItinerariesActivity.this, "Create account to become a premium user", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(ItinerariesActivity.this, CreateAccountActivity.class));
+                } else {
+                    initiatePurchase();
+                }
+            }
+        });
         faq_txt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 faq_layout.setVisibility(View.VISIBLE);
             }
         });
-        billingClient = BillingClient.newBuilder(this)
-                .enablePendingPurchases()
-                .setListener(
-                        (billingResult, list) -> {
 
-                            if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK && list != null) {
-                                for (Purchase purchase : list) {
-                                    verifySubPurchase(purchase);
-                                }
-                            }
-                        }
-                ).build();
-
-        //start the connection after initializing the billing client
-        establishConnection();
         List<String> sliderData = new ArrayList<>();
         File cacheDir = new File(getFilesDir(), "cached_images");
         String fullPath = cacheDir.getAbsolutePath();
-        sliderData.add(fullPath + "/" + "img_1" + ".jpg");
-        sliderData.add(fullPath + "/" + "img_2" + ".jpg");
-        sliderData.add(fullPath + "/" + "img5" + ".jpg");
-        sliderData.add(fullPath + "/" + "img_4" + ".jpg");
-        sliderData.add(fullPath + "/" + "img_6" + ".jpg");
+        sliderData.add(fullPath + "/" + "img_1" + ".png");
+        sliderData.add(fullPath + "/" + "img_2" + ".png");
+        sliderData.add(fullPath + "/" + "img5" + ".jpeg");
+        sliderData.add(fullPath + "/" + "img_4" + ".png");
+        sliderData.add(fullPath + "/" + "img_6" + ".jpeg");
+
 
         adapter = new SliderAdapterExample(this, sliderData);
         sliderView.setSliderAdapter(adapter);
@@ -1515,175 +1537,97 @@ String fullPath;
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                premium_layout.setVisibility(View.GONE);
+                premium_layout.setVisibility(GONE);
             }
         });
         close_faq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                faq_layout.setVisibility(View.GONE);
+                faq_layout.setVisibility(GONE);
             }
         });
         if (!Stash.getBoolean(Constants.IS_PREMIUM, false)) {
             already_purchased.setText("You are not premium user?");
             restore_purchase.setText("Purchase Now");
+        } else  {
+            already_purchased.setVisibility(GONE);
+            restore_purchase.setVisibility(GONE);
         }
-        restore_purchase.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (restore_purchase.getText().toString().equals("Restore purchase")) {
-                    restorePurchases();
-                } else {
-                    if (!Stash.getBoolean(Constants.IS_LOGGED_IN, false)) {
-                        premium_layout.setVisibility(View.GONE);
-                        faq_layout.setVisibility(View.GONE);
-                        Toast.makeText(ItinerariesActivity.this, "Create account to become a premium user", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(ItinerariesActivity.this, CreateAccountActivity.class));
-                    } else {
-                        GetSubPurchases();
-                    }
-
-
-                }
-            }
-        });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        billingClient.queryPurchasesAsync(
-                QueryPurchasesParams.newBuilder().setProductType(BillingClient.ProductType.SUBS).build(),
-                (billingResult, list) -> {
-                    if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                        for (Purchase purchase : list) {
-                            if (purchase.getPurchaseState() == Purchase.PurchaseState.PURCHASED && !purchase.isAcknowledged()) {
-                                verifySubPurchase(purchase);
-                            }
-                        }
-                    }
-                }
-        );
-    }
-
-    void establishConnection() {
-        billingClient.startConnection(new BillingClientStateListener() {
-            @Override
-            public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
-                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                    // The BillingClient is ready. You can query purchases here.
-                    //Use any of function below to get details upon successful connection
-                    Log.d("TAG", "Connection Established");
-                }
-            }
-
-            @Override
-            public void onBillingServiceDisconnected() {
-                // Try to restart the connection on the next request to
-                // Google Play by calling the startConnection() method.
-                Log.d("TAG", "Connection NOT Established");
-                establishConnection();
-            }
-        });
-    }
-
-    void GetSubPurchases() {
-        ArrayList<QueryProductDetailsParams.Product> productList = new ArrayList<>();
-
-        productList.add(
-                QueryProductDetailsParams.Product.newBuilder()
-                        .setProductId(PRODUCT_PREMIUM)
-                        .setProductType(BillingClient.ProductType.SUBS)
-                        .build()
-        );
+    private void initiatePurchase() {
+        List<QueryProductDetailsParams.Product> products = new ArrayList<>();
+        products.add(QueryProductDetailsParams.Product.newBuilder()
+                .setProductId(Constants.PRODUCT_PREMIUM)
+                .setProductType(BillingClient.ProductType.INAPP)
+                .build());
 
         QueryProductDetailsParams params = QueryProductDetailsParams.newBuilder()
-                .setProductList(productList)
+                .setProductList(products)
                 .build();
 
+        billingClient.queryProductDetailsAsync(params, (billingResult, productDetailsList) -> {
+            if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK && !productDetailsList.isEmpty()) {
+                ProductDetails productDetails = productDetailsList.get(0);
+                Log.d("TAG", productDetails + "  product");
+                List<BillingFlowParams.ProductDetailsParams> productDetailsParamsList = new ArrayList<>();
+                productDetailsParamsList.add(
+                        BillingFlowParams.ProductDetailsParams.newBuilder()
+                                .setProductDetails(productDetails)
+                                .build()
+                );
 
-        billingClient.queryProductDetailsAsync(params, new ProductDetailsResponseListener() {
-            @Override
-            public void onProductDetailsResponse(@NonNull BillingResult billingResult, @NonNull List<ProductDetails> list) {
-                LaunchSubPurchase(list.get(0));
-                Log.d("TAG", "Product Price" + list.get(0).getSubscriptionOfferDetails().get(0).getPricingPhases().getPricingPhaseList().get(0).getFormattedPrice());
+                BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
+                        .setProductDetailsParamsList(productDetailsParamsList)
+                        .build();
 
+                billingClient.launchBillingFlow(ItinerariesActivity.this, billingFlowParams);
+            } else {
+                Toast.makeText(this, "Product not found or error", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    void LaunchSubPurchase(ProductDetails productDetails) {
-        assert productDetails.getSubscriptionOfferDetails() != null;
-        ArrayList<BillingFlowParams.ProductDetailsParams> productList = new ArrayList<>();
+    private void handlePurchase(Purchase purchase) {
+        if (purchase.getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
+            if (!purchase.isAcknowledged()) {
+                AcknowledgePurchaseParams acknowledgeParams =
+                        AcknowledgePurchaseParams.newBuilder()
+                                .setPurchaseToken(purchase.getPurchaseToken())
+                                .build();
 
-        productList.add(
-                BillingFlowParams.ProductDetailsParams.newBuilder()
-                        .setProductDetails(productDetails)
-                        .setOfferToken(productDetails.getSubscriptionOfferDetails().get(0).getOfferToken())
-                        .build()
-        );
-
-        BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
-                .setProductDetailsParamsList(productList)
-                .build();
-
-        billingClient.launchBillingFlow(this, billingFlowParams);
-    }
-
-    void verifySubPurchase(Purchase purchases) {
-        if (!purchases.isAcknowledged()) {
-            billingClient.acknowledgePurchase(AcknowledgePurchaseParams
-                    .newBuilder()
-                    .setPurchaseToken(purchases.getPurchaseToken())
-                    .build(), billingResult -> {
-
-                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                    for (String pur : purchases.getProducts()) {
-                        if (pur.equalsIgnoreCase(PRODUCT_PREMIUM)) {
-                            Log.d("TAG", "Purchase is successful" + pur);
-                            Toast.makeText(this, "Purchase is Successful", Toast.LENGTH_SHORT).show();
-                        }
+                billingClient.acknowledgePurchase(acknowledgeParams, billingResult -> {
+                    if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                        Stash.put(Constants.IS_PREMIUM, true); // Only after acknowledgment
+                        saveVipToFirebase();
+                        Toast.makeText(this, "Purchase acknowledged", Toast.LENGTH_SHORT).show();
                     }
-                } else {
-                    Toast.makeText(this, "kjdhhjd", Toast.LENGTH_SHORT).show();
-                }
-            });
+                });
+            }
         }
     }
 
-    void restorePurchases() {
+    private void saveVipToFirebase() {
+        String uid = FirebaseAuth.getInstance().getCurrentUser() != null ?
+                FirebaseAuth.getInstance().getCurrentUser().getUid() : null;
 
-        billingClient = BillingClient.newBuilder(this).enablePendingPurchases().setListener((billingResult, list) -> {
-        }).build();
-        final BillingClient finalBillingClient = billingClient;
-        billingClient.startConnection(new BillingClientStateListener() {
-            @Override
-            public void onBillingServiceDisconnected() {
-            }
+        if (uid == null) {
+            Log.e("TAG", "User not logged in. Cannot save VIP status.");
+            return;
+        }
 
-            @Override
-            public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
-
-                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                    finalBillingClient.queryPurchasesAsync(
-                            QueryPurchasesParams.newBuilder().setProductType(BillingClient.ProductType.SUBS).build(), (billingResult1, list) -> {
-                                if (billingResult1.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                                    if (list.size() > 0) {
-                                        for (int i = 0; i < list.size(); i++) {
-                                            if (list.get(i).getProducts().contains(PRODUCT_PREMIUM)) {
-                                                Toast.makeText(ItinerariesActivity.this, "Premium Restored", Toast.LENGTH_SHORT).show();
-
-                                                Log.d("TAG", "Product id " + PRODUCT_PREMIUM + " will restore here");
-                                            }
-                                        }
-                                    } else {
-                                        Toast.makeText(ItinerariesActivity.this, "Nothing found at restore", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
-                }
-            }
-        });
+        FirebaseDatabase.getInstance()
+                .getReference("DiscoverMauritius")
+                .child("Users")
+                .child(uid)
+                .child("vip")
+                .setValue(true)
+                .addOnSuccessListener(unused -> {
+                    Toast.makeText(ItinerariesActivity.this, "VIP status saved", Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(ItinerariesActivity.this, "Failed to save VIP status", Toast.LENGTH_SHORT).show();
+                });
     }
 }
 

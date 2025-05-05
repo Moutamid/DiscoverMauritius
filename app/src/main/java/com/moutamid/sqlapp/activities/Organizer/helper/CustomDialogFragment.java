@@ -1,8 +1,8 @@
 package com.moutamid.sqlapp.activities.Organizer.helper;
 
 // CustomDialogFragment.java
-import android.app.Dialog;
-import android.content.DialogInterface;
+import androidx.appcompat.app.AppCompatDelegate;
+import android.app.Dialog;import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;

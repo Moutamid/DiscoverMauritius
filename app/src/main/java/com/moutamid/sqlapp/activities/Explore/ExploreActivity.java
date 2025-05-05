@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.bumptech.glide.Glide;
 import com.fxn.stash.Stash;
 import com.moutamid.sqlapp.R;
@@ -33,7 +33,8 @@ public class ExploreActivity extends AppCompatActivity {
             trou_aux_cerfs_1, belle_mare_1, flag_of_mauritius, mauritius_map_1;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+protected void onCreate(Bundle savedInstanceState) {
+    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_explore);
         Utils.loginBtnMenuListener(this);

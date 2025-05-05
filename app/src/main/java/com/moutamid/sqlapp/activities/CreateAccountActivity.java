@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.fxn.stash.Stash;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,7 +26,8 @@ public class  CreateAccountActivity extends AppCompatActivity {
     private EditText nameEditText, emailEditText, passwordEditText, reEnterPasswordEditText;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+protected void onCreate(Bundle savedInstanceState) {
+    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
         mAuth = FirebaseAuth.getInstance();
@@ -114,12 +115,12 @@ public class  CreateAccountActivity extends AppCompatActivity {
 
     private void storeUserData(String uid, String name, String email) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference usersRef = database.getReference("MyTrips").child("Users");
-        User user = new User(name, email, "yes");
+        DatabaseReference usersRef = database.getReference("DiscoverMauritius").child("Users");
+        User user = new User(name, email, false);
         usersRef.child(uid).setValue(user)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-//                        Stash.put(Constants.IS_PREMIUM, true);
+                        Stash.put(Constants.IS_PREMIUM, false);
                         Toast.makeText(CreateAccountActivity.this, "User data stored successfully!", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(CreateAccountActivity.this, "Failed to store user data.", Toast.LENGTH_SHORT).show();

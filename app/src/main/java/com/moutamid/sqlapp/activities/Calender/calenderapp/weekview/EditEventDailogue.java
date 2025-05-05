@@ -1,15 +1,13 @@
 package com.moutamid.sqlapp.activities.Calender.calenderapp.weekview;
 
-import android.app.Activity;
-import android.app.Dialog;
-import android.app.TimePickerDialog;
+import androidx.appcompat.app.AppCompatDelegate;
+import android.app.Dialog;import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.CheckBox;
@@ -65,7 +63,8 @@ public class EditEventDailogue extends Dialog {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+protected void onCreate(Bundle savedInstanceState) {
+    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));

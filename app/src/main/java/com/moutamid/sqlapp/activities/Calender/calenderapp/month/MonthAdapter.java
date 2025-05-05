@@ -46,13 +46,13 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.DateViewHold
 
     @NonNull
     @Override
-    public MonthAdapter.DateViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DateViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_month, parent, false);
-        return new MonthAdapter.DateViewHolder(view);
+        return new DateViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MonthAdapter.DateViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DateViewHolder holder, int position) {
         holder.bind(dates.get(position));
         File cacheDir = new File(context.getFilesDir(), "cached_images");
         String fullPath = cacheDir.getAbsolutePath();

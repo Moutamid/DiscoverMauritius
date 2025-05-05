@@ -6,7 +6,6 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.core.view.ViewCompat
 import com.moutamid.sqlapp.activities.Calender.calenderapp.MainActivity
-import com.moutamid.sqlapp.activities.Calender.calenderapp.MainActivity.topspace
 
 /**A RecyclerView that allows temporary pausing of casuing its scroll to affect appBarLayout, based on https://stackoverflow.com/a/45338791/878126 */
 class MyRecyclerView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) : androidx.recyclerview.widget.RecyclerView(context, attrs, defStyle) {

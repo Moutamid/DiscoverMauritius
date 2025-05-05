@@ -1,22 +1,13 @@
 package com.moutamid.sqlapp.activities.ContactUs;
 
 import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
+import androidx.appcompat.app.AppCompatDelegate;
+import android.app.Dialog;import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.telephony.TelephonyManager;
 import android.view.View;
 import android.view.Window;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.moutamid.sqlapp.R;
 
 public class ErrorDialog extends Dialog {
@@ -30,7 +21,8 @@ public class ErrorDialog extends Dialog {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+protected void onCreate(Bundle savedInstanceState) {
+    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));

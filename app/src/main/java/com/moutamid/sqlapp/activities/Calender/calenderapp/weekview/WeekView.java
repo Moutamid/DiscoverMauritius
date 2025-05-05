@@ -55,9 +55,7 @@ import com.moutamid.sqlapp.activities.Calender.calenderapp.MainActivity;
 import com.moutamid.sqlapp.activities.Calender.calenderapp.database.Event;
 import com.moutamid.sqlapp.activities.Calender.calenderapp.database.EventDbHelper;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -109,9 +107,9 @@ public class WeekView extends View {
     public static Paint mEventBackgroundPaint;
     public static float mHeaderColumnWidth;
     public static List<EventRect> mEventRects;
-    public static List<? extends com.moutamid.sqlapp.activities.Calender.calenderapp.weekview.WeekViewEvent> mPreviousPeriodEvents;
-    public static List<? extends com.moutamid.sqlapp.activities.Calender.calenderapp.weekview.WeekViewEvent> mCurrentPeriodEvents;
-    public static List<? extends com.moutamid.sqlapp.activities.Calender.calenderapp.weekview.WeekViewEvent> mNextPeriodEvents;
+    public static List<? extends WeekViewEvent> mPreviousPeriodEvents;
+    public static List<? extends WeekViewEvent> mCurrentPeriodEvents;
+    public static List<? extends WeekViewEvent> mNextPeriodEvents;
     public static TextPaint mEventTextPaint;
     public static Paint mHeaderColumnBackgroundPaint;
     public static int mFetchedPeriod = -1; // the middle period the calendar has fetched.
@@ -175,7 +173,7 @@ public class WeekView extends View {
     // Listeners.
     public static EventClickListener mEventClickListener;
     public static EventLongPressListener mEventLongPressListener;
-    public static com.moutamid.sqlapp.activities.Calender.calenderapp.weekview.WeekViewLoader mWeekViewLoader;
+    public static WeekViewLoader mWeekViewLoader;
     public static EmptyViewClickListener mEmptyViewClickListener;
     public static EmptyViewLongPressListener mEmptyViewLongPressListener;
     public static List<Event> events= new ArrayList<>();
@@ -376,7 +374,7 @@ public class WeekView extends View {
             }
         }
     };
-    public static com.moutamid.sqlapp.activities.Calender.calenderapp.weekview.DateTimeInterpreter mDateTimeInterpreter;
+    public static DateTimeInterpreter mDateTimeInterpreter;
     public static ScrollListener mScrollListener;
 
     public WeekView(Context context) {

@@ -1,49 +1,24 @@
 package com.moutamid.sqlapp.activities.ContactUs;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextWatcher;
 import android.text.style.StyleSpan;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import com.fxn.stash.Stash;
 import com.google.android.material.textfield.TextInputLayout;
 import com.moutamid.sqlapp.R;
-import com.moutamid.sqlapp.activities.DashboardActivity;
-import com.moutamid.sqlapp.activities.NetworkTask;
-import com.moutamid.sqlapp.activities.Organizer.Model.EditedText;
-import com.moutamid.sqlapp.activities.Organizer.Model.ImageData;
-import com.moutamid.sqlapp.activities.Organizer.SendActivity;
-import com.moutamid.sqlapp.activities.Organizer.helper.DatabaseContract;
-import com.moutamid.sqlapp.activities.Organizer.helper.DatabaseHelper;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ContactUsActivity extends AppCompatActivity {
     EditText first_name, last_name, email, message;
@@ -51,7 +26,8 @@ public class ContactUsActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+protected void onCreate(Bundle savedInstanceState) {
+    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_us);
         first_name = findViewById(R.id.first_name);

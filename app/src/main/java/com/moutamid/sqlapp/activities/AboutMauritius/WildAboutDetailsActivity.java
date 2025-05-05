@@ -2,38 +2,31 @@ package com.moutamid.sqlapp.activities.AboutMauritius;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupMenu;
-import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.bumptech.glide.Glide;
-import com.fxn.stash.Stash;
 import com.moutamid.sqlapp.R;
 import com.moutamid.sqlapp.activities.AppInfo.AppInfoActivity;
 import com.moutamid.sqlapp.activities.ContactUs.ContactUsActivity;
 import com.moutamid.sqlapp.activities.DashboardActivity;
 import com.moutamid.sqlapp.activities.Explore.ExploreActivity;
 import com.moutamid.sqlapp.activities.Iteneraries.ItinerariesActivity;
-import com.moutamid.sqlapp.activities.LoginActivity;
 import com.moutamid.sqlapp.activities.MyTripsActivity;
 import com.moutamid.sqlapp.activities.Organizer.OrganizerActivity;
 import com.moutamid.sqlapp.activities.TravelTipsActivity;
 import com.moutamid.sqlapp.helper.Utils;
-import com.moutamid.sqlapp.model.BeacModel;
 
 import java.io.File;
 
 public class WildAboutDetailsActivity extends AppCompatActivity {
 ImageView mauritius_wildlife, monkey_mauritius, pink_pigeon_image, mauritius_fody, geko, shrimps, lantana, black_river;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+protected void onCreate(Bundle savedInstanceState) {
+    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wild_about_details);
         Utils.loginBtnMenuListener(this);

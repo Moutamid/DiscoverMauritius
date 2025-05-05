@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import androidx.appcompat.app.AppCompatDelegate;
+
 import com.moutamid.sqlapp.R;
 import com.moutamid.sqlapp.activities.Calender.calenderapp.MainActivity;
 import com.moutamid.sqlapp.activities.Calender.calenderapp.database.EventDbHelper;
@@ -28,19 +30,19 @@ import java.util.Date;
 import java.util.Locale;
 
 public class AdEventDailogue extends Dialog {
-    String formattedDate;
     public Activity c;
+    String formattedDate;
+    String date_str;
+    String eventTime;
+    String date_string;
+    String timeRange;
     private EditText addEventEditText;
     private EditText date;
     private ImageView closeIcon, timerIcon, menuIcon;
     private CheckBox allDayCheckbox;
     private EditText descriptionText;
     private TextView saveButton;
-    String date_str;
-    String eventTime;
     private Calendar calendar;
-    String date_string;
-    String timeRange;
 
     public AdEventDailogue(Activity a, String date, String eventTime) {
         super(a);
@@ -52,6 +54,7 @@ public class AdEventDailogue extends Dialog {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));

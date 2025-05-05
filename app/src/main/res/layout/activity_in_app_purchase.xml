@@ -153,17 +153,16 @@ android:layout_marginTop="10dp"
                     android:textSize="18dp" />
             </RelativeLayout>
 
-            <View
+      <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/editBoxFG" />
-
-            <RelativeLayout
+<RelativeLayout
+                android:id="@+id/purchase_lyt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp">
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -138,14 +138,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.SavedDataActivity"
-            android:exported="false" />
-
-
-        <activity
-            android:name=".activities.SavedDetailsActivity"
-            android:exported="true" />
-        <activity
             android:name=".offlinemap.MapActivity"
             android:exported="true" />
         <activity

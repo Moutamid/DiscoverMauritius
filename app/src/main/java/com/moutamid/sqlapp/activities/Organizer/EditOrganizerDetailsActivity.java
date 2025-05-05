@@ -9,7 +9,6 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.pdf.PdfDocument;
 import android.graphics.pdf.PdfRenderer;
 import android.net.Uri;
 import android.os.Build;
@@ -26,12 +25,10 @@ import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,8 +39,8 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.app.AppCompatActivity;import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -55,7 +52,6 @@ import com.moutamid.sqlapp.activities.ContactUs.ContactUsActivity;
 import com.moutamid.sqlapp.activities.DashboardActivity;
 import com.moutamid.sqlapp.activities.Explore.ExploreActivity;
 import com.moutamid.sqlapp.activities.Iteneraries.ItinerariesActivity;
-import com.moutamid.sqlapp.activities.LoginActivity;
 import com.moutamid.sqlapp.activities.MyTripsActivity;
 import com.moutamid.sqlapp.activities.Organizer.Adapter.FileAdapter;
 import com.moutamid.sqlapp.activities.Organizer.Adapter.ImageAdapter;
@@ -68,8 +64,6 @@ import com.moutamid.sqlapp.helper.Utils;
 import com.nareshchocha.filepickerlibrary.models.DocumentFilePickerConfig;
 import com.nareshchocha.filepickerlibrary.ui.FilePicker;
 import com.nareshchocha.filepickerlibrary.utilities.appConst.Const;
-//import com.shockwave.pdfium.PdfDocument;
-//import com.shockwave.pdfium.PdfiumCore;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -107,7 +101,8 @@ public class EditOrganizerDetailsActivity extends AppCompatActivity {
     EditedText position;
 int position1;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+protected void onCreate(Bundle savedInstanceState) {
+    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
         dbHelper = new DatabaseHelper(this);
@@ -333,8 +328,8 @@ Log.d("id", editedTextId+"");
     public void openFileManager(View view) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (above13Check()) {
-                shouldShowRequestPermissionRationale(android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
-                shouldShowRequestPermissionRationale(android.Manifest.permission.READ_EXTERNAL_STORAGE);
+                shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE);
                 shouldShowRequestPermissionRationale(Manifest.permission.READ_MEDIA_IMAGES);
                 shouldShowRequestPermissionRationale(Manifest.permission.READ_MEDIA_VIDEO);
                 ActivityCompat.requestPermissions(EditOrganizerDetailsActivity.this, permissions13, 2);
@@ -343,8 +338,8 @@ Log.d("id", editedTextId+"");
             }
         } else {
             if (below13Check()) {
-                shouldShowRequestPermissionRationale(android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
-                shouldShowRequestPermissionRationale(android.Manifest.permission.READ_EXTERNAL_STORAGE);
+                shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE);
                 ActivityCompat.requestPermissions(EditOrganizerDetailsActivity.this, permissions, 2);
             } else {
                 open();

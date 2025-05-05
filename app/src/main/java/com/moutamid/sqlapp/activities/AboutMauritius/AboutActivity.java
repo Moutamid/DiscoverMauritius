@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.bumptech.glide.Glide;
 import com.fxn.stash.Stash;
 import com.moutamid.sqlapp.R;
@@ -19,7 +19,8 @@ public class AboutActivity extends AppCompatActivity {
     ImageView etymology, mauritius_flag, mauritius_geography, mauritiue_conomy, mauritius_culture, mauritius_history, mauritius_demography, mauritius_wildlife, mauritius_environment;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+protected void onCreate(Bundle savedInstanceState) {
+    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
         mauritius_flag = findViewById(R.id.mauritius_flag);

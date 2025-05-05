@@ -1,5 +1,8 @@
 package com.moutamid.sqlapp.activities.Explore;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,8 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.app.AppCompatActivity;import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.billingclient.api.AcknowledgePurchaseParams;
@@ -23,9 +26,12 @@ import com.android.billingclient.api.BillingResult;
 import com.android.billingclient.api.ProductDetails;
 import com.android.billingclient.api.ProductDetailsResponseListener;
 import com.android.billingclient.api.Purchase;
+import com.android.billingclient.api.PurchasesUpdatedListener;
 import com.android.billingclient.api.QueryProductDetailsParams;
 import com.android.billingclient.api.QueryPurchasesParams;
 import com.fxn.stash.Stash;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.moutamid.sqlapp.R;
 import com.moutamid.sqlapp.activities.AppInfo.AppInfoActivity;
 import com.moutamid.sqlapp.activities.ContactUs.ContactUsActivity;
@@ -49,7 +55,6 @@ import java.util.List;
 public class ExploreDetailsActivity extends AppCompatActivity {
     public static LinearLayout premium_layout, faq_layout;
     public static TextView faq_txt, text1, text2;
-    private static String PRODUCT_PREMIUM = "lifetime";
     LinearLayout more_layout;
     TextView title;
     ExploreAdapter exploreAdapter;
@@ -63,14 +68,48 @@ public class ExploreDetailsActivity extends AppCompatActivity {
     private double[] itemLatitudes;
     private double[] itemLongitudes;
     private BillingClient billingClient;
+    private final PurchasesUpdatedListener purchasesUpdatedListener = (billingResult, purchases) -> {
+        if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK && purchases != null) {
+            for (Purchase purchase : purchases) {
+                if (purchase.getProducts().contains(Constants.PRODUCT_PREMIUM)) {
+                    // Grant the user access
+                    Toast.makeText(this, "Lifetime purchase successful!", Toast.LENGTH_SHORT).show();
+                    handlePurchase(purchase);
+                }
+            }
+        } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.USER_CANCELED) {
+            Toast.makeText(this, "Purchase canceled", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Error: " + billingResult.getDebugMessage(), Toast.LENGTH_SHORT).show();
+        }
+    };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+protected void onCreate(Bundle savedInstanceState) {
+    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_explore2);
         premium();
         Utils.loginBtnMenuListener(this);
         title = findViewById(R.id.title);
+        billingClient = BillingClient.newBuilder(this)
+                .setListener(purchasesUpdatedListener)
+                .enablePendingPurchases()
+                .build();
+
+        billingClient.startConnection(new BillingClientStateListener() {
+            @Override
+            public void onBillingSetupFinished(BillingResult billingResult) {
+                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                    Toast.makeText(ExploreDetailsActivity.this, "Billing connected", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onBillingServiceDisconnected() {
+                Toast.makeText(ExploreDetailsActivity.this, "Billing disconnected", Toast.LENGTH_SHORT).show();
+            }
+        });
         Intent intent = getIntent();
         String itemHeader = intent.getStringExtra("itemHeader");
         itemName = intent.getStringArrayExtra("itemName1");
@@ -102,15 +141,15 @@ public class ExploreDetailsActivity extends AppCompatActivity {
         more_layout = findViewById(R.id.more_layout);
         ImageView menu = findViewById(R.id.menu);
         ImageView close = findViewById(R.id.close);
-        menu.setVisibility(View.GONE);
-        more_layout.setVisibility(View.VISIBLE);
-        close.setVisibility(View.VISIBLE);
+        menu.setVisibility(GONE);
+        more_layout.setVisibility(VISIBLE);
+        close.setVisibility(VISIBLE);
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                menu.setVisibility(View.VISIBLE);
-                more_layout.setVisibility(View.GONE);
-                close.setVisibility(View.GONE);
+                menu.setVisibility(VISIBLE);
+                more_layout.setVisibility(GONE);
+                close.setVisibility(GONE);
             }
         });
     }
@@ -159,23 +198,11 @@ public class ExploreDetailsActivity extends AppCompatActivity {
     }
 
     public void premium() {
-        TextView already_purchased;
+        TextView already_purchased, premium_amount;
         already_purchased = findViewById(R.id.already_purchased);
+        premium_amount = findViewById(R.id.premium_amount);
         restore_purchase = findViewById(R.id.restore_purchase);
         lifetime_premium = findViewById(R.id.lifetime_premium);
-        lifetime_premium.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!Stash.getBoolean(Constants.IS_LOGGED_IN, false)) {
-                    premium_layout.setVisibility(View.GONE);
-                    faq_layout.setVisibility(View.GONE);
-                    Toast.makeText(ExploreDetailsActivity.this, "Create account to become a premium user", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(ExploreDetailsActivity.this, CreateAccountActivity.class));
-                } else {
-                    GetSubPurchases();
-                }
-            }
-        });
         premium_layout = findViewById(R.id.premium_layout);
         faq_layout = findViewById(R.id.faq_layout);
         close = findViewById(R.id.close);
@@ -184,35 +211,37 @@ public class ExploreDetailsActivity extends AppCompatActivity {
         faq_txt = findViewById(R.id.faq_txt);
         text1 = findViewById(R.id.text111);
         text2 = findViewById(R.id.text112);
+        RelativeLayout purchase_lyt = findViewById(R.id.purchase_lyt);
+        premium_amount.setText(Stash.getString(Constants.PRODUCT_PREMIUM_VALUE));
+        purchase_lyt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!Stash.getBoolean(Constants.IS_LOGGED_IN, false)) {
+                    premium_layout.setVisibility(GONE);
+                    faq_layout.setVisibility(GONE);
+                    Toast.makeText(ExploreDetailsActivity.this, "Create account to become a premium user", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(ExploreDetailsActivity.this, CreateAccountActivity.class));
+                } else {
+                    initiatePurchase();
+                }
+            }
+        });
         faq_txt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 faq_layout.setVisibility(View.VISIBLE);
             }
         });
-        billingClient = BillingClient.newBuilder(this)
-                .enablePendingPurchases()
-                .setListener(
-                        (billingResult, list) -> {
 
-                            if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK && list != null) {
-                                for (Purchase purchase : list) {
-                                    verifySubPurchase(purchase);
-                                }
-                            }
-                        }
-                ).build();
-
-        //start the connection after initializing the billing client
-        establishConnection();
         List<String> sliderData = new ArrayList<>();
         File cacheDir = new File(getFilesDir(), "cached_images");
         String fullPath = cacheDir.getAbsolutePath();
-        sliderData.add(fullPath + "/" + "img_1" + ".jpg");
-        sliderData.add(fullPath + "/" + "img_2" + ".jpg");
-        sliderData.add(fullPath + "/" + "img5" + ".jpg");
-        sliderData.add(fullPath + "/" + "img_4" + ".jpg");
-        sliderData.add(fullPath + "/" + "img_6" + ".jpg");
+        sliderData.add(fullPath + "/" + "img_1" + ".png");
+        sliderData.add(fullPath + "/" + "img_2" + ".png");
+        sliderData.add(fullPath + "/" + "img5" + ".jpeg");
+        sliderData.add(fullPath + "/" + "img_4" + ".png");
+        sliderData.add(fullPath + "/" + "img_6" + ".jpeg");
+
 
         adapter = new SliderAdapterExample(this, sliderData);
         sliderView.setSliderAdapter(adapter);
@@ -245,158 +274,97 @@ public class ExploreDetailsActivity extends AppCompatActivity {
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                premium_layout.setVisibility(View.GONE);
+                premium_layout.setVisibility(GONE);
             }
         });
         close_faq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                faq_layout.setVisibility(View.GONE);
+                faq_layout.setVisibility(GONE);
             }
         });
         if (!Stash.getBoolean(Constants.IS_PREMIUM, false)) {
             already_purchased.setText("You are not premium user?");
             restore_purchase.setText("Purchase Now");
+        } else  {
+            already_purchased.setVisibility(GONE);
+            restore_purchase.setVisibility(GONE);
         }
-        restore_purchase.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (restore_purchase.getText().toString().equals("Restore purchase")) {
-                    restorePurchases();
-                } else {
-                    if (!Stash.getBoolean(Constants.IS_LOGGED_IN, false)) {
-                        premium_layout.setVisibility(View.GONE);
-                        faq_layout.setVisibility(View.GONE);
-                        Toast.makeText(ExploreDetailsActivity.this, "Create account to become a premium user", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(ExploreDetailsActivity.this, CreateAccountActivity.class));
-                    } else {
-                        GetSubPurchases();
-                    }
-
-                }
-            }
-        });
     }
 
-
-    void establishConnection() {
-        billingClient.startConnection(new BillingClientStateListener() {
-            @Override
-            public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
-                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                    // The BillingClient is ready. You can query purchases here.
-                    //Use any of function below to get details upon successful connection
-                    Log.d("TAG", "Connection Established");
-                }
-            }
-
-            @Override
-            public void onBillingServiceDisconnected() {
-                // Try to restart the connection on the next request to
-                // Google Play by calling the startConnection() method.
-                Log.d("TAG", "Connection NOT Established");
-                establishConnection();
-            }
-        });
-    }
-
-    void GetSubPurchases() {
-        ArrayList<QueryProductDetailsParams.Product> productList = new ArrayList<>();
-
-        productList.add(
-                QueryProductDetailsParams.Product.newBuilder()
-                        .setProductId(PRODUCT_PREMIUM)
-                        .setProductType(BillingClient.ProductType.SUBS)
-                        .build()
-        );
+    private void initiatePurchase() {
+        List<QueryProductDetailsParams.Product> products = new ArrayList<>();
+        products.add(QueryProductDetailsParams.Product.newBuilder()
+                .setProductId(Constants.PRODUCT_PREMIUM)
+                .setProductType(BillingClient.ProductType.INAPP)
+                .build());
 
         QueryProductDetailsParams params = QueryProductDetailsParams.newBuilder()
-                .setProductList(productList)
+                .setProductList(products)
                 .build();
 
+        billingClient.queryProductDetailsAsync(params, (billingResult, productDetailsList) -> {
+            if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK && !productDetailsList.isEmpty()) {
+                ProductDetails productDetails = productDetailsList.get(0);
+                Log.d("TAG", productDetails + "  product");
+                List<BillingFlowParams.ProductDetailsParams> productDetailsParamsList = new ArrayList<>();
+                productDetailsParamsList.add(
+                        BillingFlowParams.ProductDetailsParams.newBuilder()
+                                .setProductDetails(productDetails)
+                                .build()
+                );
 
-        billingClient.queryProductDetailsAsync(params, new ProductDetailsResponseListener() {
-            @Override
-            public void onProductDetailsResponse(@NonNull BillingResult billingResult, @NonNull List<ProductDetails> list) {
-                LaunchSubPurchase(list.get(0));
-                Log.d("TAG", "Product Price" + list.get(0).getSubscriptionOfferDetails().get(0).getPricingPhases().getPricingPhaseList().get(0).getFormattedPrice());
+                BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
+                        .setProductDetailsParamsList(productDetailsParamsList)
+                        .build();
 
+                billingClient.launchBillingFlow(ExploreDetailsActivity.this, billingFlowParams);
+            } else {
+                Toast.makeText(this, "Product not found or error", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    void LaunchSubPurchase(ProductDetails productDetails) {
-        assert productDetails.getSubscriptionOfferDetails() != null;
-        ArrayList<BillingFlowParams.ProductDetailsParams> productList = new ArrayList<>();
+    private void handlePurchase(Purchase purchase) {
+        if (purchase.getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
+            if (!purchase.isAcknowledged()) {
+                AcknowledgePurchaseParams acknowledgeParams =
+                        AcknowledgePurchaseParams.newBuilder()
+                                .setPurchaseToken(purchase.getPurchaseToken())
+                                .build();
 
-        productList.add(
-                BillingFlowParams.ProductDetailsParams.newBuilder()
-                        .setProductDetails(productDetails)
-                        .setOfferToken(productDetails.getSubscriptionOfferDetails().get(0).getOfferToken())
-                        .build()
-        );
-
-        BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
-                .setProductDetailsParamsList(productList)
-                .build();
-
-        billingClient.launchBillingFlow(this, billingFlowParams);
-    }
-
-    void verifySubPurchase(Purchase purchases) {
-        if (!purchases.isAcknowledged()) {
-            billingClient.acknowledgePurchase(AcknowledgePurchaseParams
-                    .newBuilder()
-                    .setPurchaseToken(purchases.getPurchaseToken())
-                    .build(), billingResult -> {
-
-                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                    for (String pur : purchases.getProducts()) {
-                        if (pur.equalsIgnoreCase(PRODUCT_PREMIUM)) {
-                            Log.d("TAG", "Purchase is successful" + pur);
-                            Toast.makeText(this, "Purchase is Successful", Toast.LENGTH_SHORT).show();
-                        }
+                billingClient.acknowledgePurchase(acknowledgeParams, billingResult -> {
+                    if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                        Stash.put(Constants.IS_PREMIUM, true); // Only after acknowledgment
+                        saveVipToFirebase();
+                        Toast.makeText(this, "Purchase acknowledged", Toast.LENGTH_SHORT).show();
                     }
-                } else {
-                    Toast.makeText(this, "kjdhhjd", Toast.LENGTH_SHORT).show();
-                }
-            });
+                });
+            }
         }
     }
 
-    void restorePurchases() {
+    private void saveVipToFirebase() {
+        String uid = FirebaseAuth.getInstance().getCurrentUser() != null ?
+                FirebaseAuth.getInstance().getCurrentUser().getUid() : null;
 
-        billingClient = BillingClient.newBuilder(this).enablePendingPurchases().setListener((billingResult, list) -> {
-        }).build();
-        final BillingClient finalBillingClient = billingClient;
-        billingClient.startConnection(new BillingClientStateListener() {
-            @Override
-            public void onBillingServiceDisconnected() {
-            }
+        if (uid == null) {
+            Log.e("TAG", "User not logged in. Cannot save VIP status.");
+            return;
+        }
 
-            @Override
-            public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
-
-                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                    finalBillingClient.queryPurchasesAsync(
-                            QueryPurchasesParams.newBuilder().setProductType(BillingClient.ProductType.SUBS).build(), (billingResult1, list) -> {
-                                if (billingResult1.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                                    if (list.size() > 0) {
-                                        for (int i = 0; i < list.size(); i++) {
-                                            if (list.get(i).getProducts().contains(PRODUCT_PREMIUM)) {
-                                                Toast.makeText(ExploreDetailsActivity.this, "Premium Restored", Toast.LENGTH_SHORT).show();
-
-                                                Log.d("TAG", "Product id " + PRODUCT_PREMIUM + " will restore here");
-                                            }
-                                        }
-                                    } else {
-                                        Toast.makeText(ExploreDetailsActivity.this, "Nothing found at restore", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
-                }
-            }
-        });
+        FirebaseDatabase.getInstance()
+                .getReference("DiscoverMauritius")
+                .child("Users")
+                .child(uid)
+                .child("vip")
+                .setValue(true)
+                .addOnSuccessListener(unused -> {
+                    Toast.makeText(ExploreDetailsActivity.this, "VIP status saved", Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(ExploreDetailsActivity.this, "Failed to save VIP status", Toast.LENGTH_SHORT).show();
+                });
     }
 
 }
