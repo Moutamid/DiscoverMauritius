@@ -1208,6 +1208,7 @@ Other activities include speedboat rides, water skiing, and paddleboarding. Snor
 
         <RelativeLayout
             android:id="@+id/eatBtn"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="13dp"
@@ -1234,6 +1235,7 @@ Other activities include speedboat rides, water skiing, and paddleboarding. Snor
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:visibility="gone"
             android:layout_marginTop="6dp"
             android:background="#9F9F9F" />
 

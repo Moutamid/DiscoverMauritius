@@ -688,11 +688,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_gravity="end"
+        android:visibility="gone"
         android:layout_marginTop="60dp"
         android:background="@drawable/filled_card_bg"
-        android:orientation="vertical"
-        android:visibility="gone"
-        >
+        android:orientation="vertical">
 
         <RelativeLayout
             android:id="@+id/send"
@@ -857,6 +856,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/eatBtn"
+            android:visibility="gone"
             android:layout_marginStart="13dp"
             android:layout_marginTop="13dp"
             android:layout_marginEnd="13dp">
@@ -881,6 +881,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:visibility="gone"
             android:layout_marginTop="6dp"
             android:background="#9F9F9F" />
 

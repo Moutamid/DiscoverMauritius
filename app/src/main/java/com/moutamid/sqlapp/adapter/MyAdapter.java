@@ -16,6 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.fxn.stash.Stash;
 import com.moutamid.sqlapp.R;
 import com.moutamid.sqlapp.activities.Beaches.BeachDetails;
@@ -28,12 +29,15 @@ import com.moutamid.sqlapp.offlinemap.DistanceCalculator;
 import com.moutamid.sqlapp.offlinemap.DurationCalculator;
 import com.moutamid.sqlapp.offlinemap.MapActivity;
 
+import java.io.File;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<BeacModel> beacModels;
     private Context context;
     private OnStartDragListener dragListener;
+    String fullPath;
+
     private double totalDistance = 0.0;
     private double totalDuration = 0.0;
     public MyAdapter(List<BeacModel> beacModels, Context context, OnStartDragListener dragListener) {
@@ -82,6 +86,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             String formattedDuration = DurationCalculator.formatDuration(duration);
             holder.textView3.setText(formattedDuration + "\n" + String.format("%.1f km", distance));
         }
+//        File cacheDir = new File(context.getFilesDir(), "cached_images");
+//        fullPath = cacheDir.getAbsolutePath();
+//        String s = fullPath + "/" + "bagatelle_mall_1" + ".jpg";
+        Glide.with(context)
+                .load(new File(beacModel.main_image))
+                .into(holder.imageView);
+
         holder.number.setText(String.valueOf(position + 1));
         MyTripsActivity.total_stop.setText(beacModels.size()+ " stops");
 //        holder.imageView.setImageResource(beacModel.main_image);
@@ -154,7 +165,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 intent.putExtra("map_lng", beacModel.lng);
                 context.startActivity(intent);
             } else {
-                ItinerariesActivity.premium_layout.setVisibility(View.VISIBLE);
+                MyTripsActivity.premium_layout.setVisibility(View.VISIBLE);
             }
             }
         });

@@ -151,12 +151,15 @@ public class DashboardActivity extends AppCompatActivity {
         premium();
         checkVipStatus();
         checkApp(DashboardActivity.this);
-        if (Stash.getBoolean("wasRunning", false)) {
+        if (Stash.getBoolean("wasRunning", false)
+                && !Stash.getBoolean("appHandledReopen", false)) {
+
             handleAppReopen();
 
+            Stash.put("appHandledReopen", true); // prevent repeat
+            Stash.put("wasRunning", false); // clear flag
         }
-//
-        Stash.put("wasRunning", false);
+//        Stash.put("wasRunning", false);
 
         findViewById(R.id.eatBtn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,7 +180,6 @@ public class DashboardActivity extends AppCompatActivity {
 
     private void handleAppReopen() {
         if (!Stash.getBoolean(Constants.IS_PREMIUM, false)) {
-
             DatabaseHelper db = new DatabaseHelper(DashboardActivity.this);
             db.deleteAllBeacModels();
         }

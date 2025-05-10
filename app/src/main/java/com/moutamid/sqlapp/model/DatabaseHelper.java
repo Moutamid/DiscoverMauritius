@@ -11,13 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "beac_model.db";
-    private static final int DATABASE_VERSION = 1;
     public static final String TABLE_NAME = "beac_models";
-    private static final String COLUMN_ID = "id";
-    private static final String COLUMN_ID_COPY = "id_copy";
     public static final String COLUMN_TITLE = "title";
-    private static final String COLUMN_MAIN_IMAGE = "main_image";
     public static final String COLUMN_TEXT1 = "text1";
     public static final String COLUMN_TITLE1 = "title1";
     public static final String COLUMN_MAIN_IMAGE1 = "image1";
@@ -45,6 +40,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_TEXT12 = "text12";
     public static final String COLUMN_LAT = "lat";
     public static final String COLUMN_LNG = "lng";
+    private static final String DATABASE_NAME = "beac_model.db";
+    private static final int DATABASE_VERSION = 1;
+    private static final String COLUMN_ID = "id";
+    private static final String COLUMN_ID_COPY = "id_copy";
+    private static final String COLUMN_MAIN_IMAGE = "main_image";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -56,14 +56,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_ID_COPY + " INTEGER," +
                 COLUMN_TITLE + " TEXT, " +
-                COLUMN_MAIN_IMAGE + " INTEGER, " +
+                COLUMN_MAIN_IMAGE + " TEXT, " +
                 COLUMN_TEXT1 + " TEXT, " +
                 COLUMN_TITLE1 + " TEXT, " +
-                COLUMN_MAIN_IMAGE1 + " INTEGER, " +
+                COLUMN_MAIN_IMAGE1 + " TEXT, " +
                 COLUMN_TEXT2 + " TEXT, " +
                 COLUMN_TITLE2 + " TEXT, " +
                 COLUMN_TEXT3 + " TEXT, " +
-                COLUMN_MAIN_IMAGE2 + " INTEGER, " +
+                COLUMN_MAIN_IMAGE2 + " TEXT, " +
                 COLUMN_TEXT4 + " TEXT, " +
                 COLUMN_TITLE3 + " TEXT, " +
                 COLUMN_TEXT5 + " TEXT, " +
@@ -74,24 +74,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_TITLE6 + " TEXT, " +
                 COLUMN_TITLE7 + " TEXT, " +
                 COLUMN_TEXT8 + " TEXT, " +
-                COLUMN_MAIN_IMAGE3 + " INTEGER, " +
+                COLUMN_MAIN_IMAGE3 + " TEXT, " +
                 COLUMN_TEXT9 + " TEXT, " +
                 COLUMN_TITLE8 + " TEXT, " +
                 COLUMN_TEXT10 + " TEXT, " +
-                COLUMN_MAIN_IMAGE4 + " INTEGER, " +
+                COLUMN_MAIN_IMAGE4 + " TEXT, " +
                 COLUMN_TEXT11 + " TEXT, " +
-                COLUMN_MAIN_IMAGE5 + " INTEGER, " +
+                COLUMN_MAIN_IMAGE5 + " TEXT, " +
                 COLUMN_TEXT12 + " TEXT," +
                 COLUMN_LAT + " DOUBLE," +
                 COLUMN_LNG + " DOUBLE " +
                 ")";
         db.execSQL(createTableQuery);
     }
+
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         String dropTableQuery = "DROP TABLE IF EXISTS " + TABLE_NAME;
         db.execSQL(dropTableQuery);
         onCreate(db);
     }
+
     public long insertBeacModel(BeacModel model) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -129,56 +131,55 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return id;
     }
+
     public List<BeacModel> getAllBeacModels() {
         List<BeacModel> beacModels = new ArrayList<>();
-//        String selectQuery = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + COLUMN_ID_COPY + " ASC";
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        Cursor cursor = db.rawQuery(selectQuery, null);
-//        if (cursor.moveToFirst()) {
-//            do {
+        String selectQuery = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + COLUMN_ID_COPY + " ASC";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
                 BeacModel model = new BeacModel();
-//                model.title = cursor.getString(cursor.getColumnIndex(COLUMN_TITLE));
-//                model.main_image = cursor.getInt(cursor.getColumnIndex(COLUMN_MAIN_IMAGE));
-//                model.id_copy = cursor.getInt(cursor.getColumnIndex(COLUMN_ID_COPY));
-//                model.text1 = cursor.getString(cursor.getColumnIndex(COLUMN_TEXT1));
-//                model.title1 = cursor.getString(cursor.getColumnIndex(COLUMN_TITLE1));
-//                model.image1 = cursor.getInt(cursor.getColumnIndex(COLUMN_MAIN_IMAGE1));
-//                model.text2 = cursor.getString(cursor.getColumnIndex(COLUMN_TEXT2));
-//                model.title2 = cursor.getString(cursor.getColumnIndex(COLUMN_TITLE2));
-//                model.text3 = cursor.getString(cursor.getColumnIndex(COLUMN_TEXT3));
-//                model.image2 = cursor.getInt(cursor.getColumnIndex(COLUMN_MAIN_IMAGE2));
-//                model.text4 = cursor.getString(cursor.getColumnIndex(COLUMN_TEXT4));
-//                model.title3 = cursor.getString(cursor.getColumnIndex(COLUMN_TITLE3));
-//                model.text5 = cursor.getString(cursor.getColumnIndex(COLUMN_TEXT5));
-//                model.title4 = cursor.getString(cursor.getColumnIndex(COLUMN_TITLE4));
-//                model.text6 = cursor.getString(cursor.getColumnIndex(COLUMN_TEXT6));
-//                model.title5 = cursor.getString(cursor.getColumnIndex(COLUMN_TITLE5));
-//                model.text7 = cursor.getString(cursor.getColumnIndex(COLUMN_TEXT7));
-//                model.title6 = cursor.getString(cursor.getColumnIndex(COLUMN_TITLE6));
-//                model.title7 = cursor.getString(cursor.getColumnIndex(COLUMN_TITLE7));
-//                model.text8 = cursor.getString(cursor.getColumnIndex(COLUMN_TEXT8));
-//                model.image3 = cursor.getInt(cursor.getColumnIndex(COLUMN_MAIN_IMAGE3));
-//                model.text9 = cursor.getString(cursor.getColumnIndex(COLUMN_TEXT9));
-//                model.title8 = cursor.getString(cursor.getColumnIndex(COLUMN_TITLE8));
-//                model.text10 = cursor.getString(cursor.getColumnIndex(COLUMN_TEXT10));
-//                model.image4 = cursor.getInt(cursor.getColumnIndex(COLUMN_MAIN_IMAGE4));
-//                model.text11 = cursor.getString(cursor.getColumnIndex(COLUMN_TEXT11));
-//                model.image5 = cursor.getInt(cursor.getColumnIndex(COLUMN_MAIN_IMAGE5));
-//                model.text12 = cursor.getString(cursor.getColumnIndex(COLUMN_TEXT12));
-//                model.lat = cursor.getDouble(cursor.getColumnIndex(COLUMN_LAT));
-//                model.lng = cursor.getDouble(cursor.getColumnIndex(COLUMN_LNG));
-//
-//                beacModels.add(model);
-//            } while (cursor.moveToNext());
-//        }
-//
-//        cursor.close();
-//        db.close();
+                model.title = cursor.getString(cursor.getColumnIndex(COLUMN_TITLE));
+                model.main_image = cursor.getString(cursor.getColumnIndex(COLUMN_MAIN_IMAGE));
+                model.id_copy = cursor.getInt(cursor.getColumnIndex(COLUMN_ID_COPY));
+                model.text1 = cursor.getString(cursor.getColumnIndex(COLUMN_TEXT1));
+                model.title1 = cursor.getString(cursor.getColumnIndex(COLUMN_TITLE1));
+                model.image1 = cursor.getString(cursor.getColumnIndex(COLUMN_MAIN_IMAGE1));
+                model.text2 = cursor.getString(cursor.getColumnIndex(COLUMN_TEXT2));
+                model.title2 = cursor.getString(cursor.getColumnIndex(COLUMN_TITLE2));
+                model.text3 = cursor.getString(cursor.getColumnIndex(COLUMN_TEXT3));
+                model.image2 = cursor.getString(cursor.getColumnIndex(COLUMN_MAIN_IMAGE2));
+                model.text4 = cursor.getString(cursor.getColumnIndex(COLUMN_TEXT4));
+                model.title3 = cursor.getString(cursor.getColumnIndex(COLUMN_TITLE3));
+                model.text5 = cursor.getString(cursor.getColumnIndex(COLUMN_TEXT5));
+                model.title4 = cursor.getString(cursor.getColumnIndex(COLUMN_TITLE4));
+                model.text6 = cursor.getString(cursor.getColumnIndex(COLUMN_TEXT6));
+                model.title5 = cursor.getString(cursor.getColumnIndex(COLUMN_TITLE5));
+                model.text7 = cursor.getString(cursor.getColumnIndex(COLUMN_TEXT7));
+                model.title6 = cursor.getString(cursor.getColumnIndex(COLUMN_TITLE6));
+                model.title7 = cursor.getString(cursor.getColumnIndex(COLUMN_TITLE7));
+                model.text8 = cursor.getString(cursor.getColumnIndex(COLUMN_TEXT8));
+                model.image3 = cursor.getString(cursor.getColumnIndex(COLUMN_MAIN_IMAGE3));
+                model.text9 = cursor.getString(cursor.getColumnIndex(COLUMN_TEXT9));
+                model.title8 = cursor.getString(cursor.getColumnIndex(COLUMN_TITLE8));
+                model.text10 = cursor.getString(cursor.getColumnIndex(COLUMN_TEXT10));
+                model.image4 = cursor.getString(cursor.getColumnIndex(COLUMN_MAIN_IMAGE4));
+                model.text11 = cursor.getString(cursor.getColumnIndex(COLUMN_TEXT11));
+                model.image5 = cursor.getString(cursor.getColumnIndex(COLUMN_MAIN_IMAGE5));
+                model.text12 = cursor.getString(cursor.getColumnIndex(COLUMN_TEXT12));
+                model.lat = cursor.getDouble(cursor.getColumnIndex(COLUMN_LAT));
+                model.lng = cursor.getDouble(cursor.getColumnIndex(COLUMN_LNG));
+                beacModels.add(model);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
         return beacModels;
     }
     public int updateBeacModel(BeacModel model) {
         SQLiteDatabase db = this.getWritableDatabase();
-
         ContentValues values = new ContentValues();
         values.put(COLUMN_TITLE, model.title);
         values.put(COLUMN_MAIN_IMAGE, model.main_image);
@@ -210,7 +211,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_TEXT12, model.text12);
         values.put(COLUMN_LAT, model.lat);
         values.put(COLUMN_LNG, model.lng);
-Log.d("value", values+"  data");        // updating row
+        Log.d("value", values + "  data");
         return db.update(TABLE_NAME, values, COLUMN_TITLE + " = ?",
                 new String[]{String.valueOf(model.title)});
     }
@@ -219,4 +220,5 @@ Log.d("value", values+"  data");        // updating row
         db.delete(TABLE_NAME, null, null);
         db.close();
     }
+
 }

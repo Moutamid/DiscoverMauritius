@@ -74,7 +74,7 @@
                 android:fontFamily="@font/poppins_regular"
                 android:justificationMode="inter_word"
                 android:paddingTop="4dp"
-                android:text="The Odyssea Mauritius is a travel guide app that helps you plan your trip and tour Mauritius for a better travel experience. Explore the history, life, and culture of the city stress free with this app. The app is free to download. Optional premium features or additional content are offered as in-app purchase."
+                android:text="The Odyscia Mauritius is a travel guide app that helps you plan your trip and tour Mauritius for a better travel experience. Explore the history, life, and culture of the city stress free with this app. The app is free to download. Optional premium features or additional content are offered as in-app purchase."
                 android:textColor="#5C5C5C"
                 android:textSize="14dp" />
 
@@ -106,7 +106,7 @@
                 android:fontFamily="@font/poppins_regular"
                 android:justificationMode="inter_word"
                 android:paddingTop="4dp"
-                android:text="We are doing our best to prepare the content of this app. To the extent permitted by the law, Odyssea shall not be responsible for any losses and/or damages due to the usage of the information on our app. By using our app, you hereby consent to our disclaimer and agree to its terms."
+                android:text="We are doing our best to prepare the content of this app. To the extent permitted by the law, Odyscia shall not be responsible for any losses and/or damages due to the usage of the information on our app. By using our app, you hereby consent to our disclaimer and agree to its terms."
                 android:textColor="#5C5C5C"
                 android:textSize="14dp" />
 
@@ -211,7 +211,7 @@
                     android:fontFamily="@font/poppins_regular"
                     android:justificationMode="inter_word"
                     android:paddingTop="4dp"
-                    android:text="Any links contained in our app may lead to external sites are provided for convenience only. Any information or statements that appeared in these sites are not sponsored, endorsed, or otherwise approved by Odyssea. For these external sites, Odyssea cannot be held liable for the availability of, or the content located on or through it. Plus, any losses or damages occurred from using these contents or the internet generally."
+                    android:text="Any links contained in our app may lead to external sites are provided for convenience only. Any information or statements that appeared in these sites are not sponsored, endorsed, or otherwise approved by Odyscia. For these external sites, Odyscia cannot be held liable for the availability of, or the content located on or through it. Plus, any losses or damages occurred from using these contents or the internet generally."
                     android:textColor="#5C5C5C"
                     android:textSize="14dp" />
 

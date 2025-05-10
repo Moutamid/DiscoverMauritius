@@ -2,6 +2,7 @@ package com.moutamid.sqlapp.adapter;
 
 import static com.moutamid.sqlapp.model.DatabaseHelper.TABLE_NAME;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -3330,7 +3331,12 @@ public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.ViewHold
                         String mainWeather = weather.getString("description");
                         String icon = weather.getString("icon");
                         String iconUrl = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
-                        Glide.with(context).load(iconUrl).into(holder.weather_icon);
+                        if (context instanceof Activity) {
+                            Activity activity = (Activity) context;
+                            if (!activity.isDestroyed() && !activity.isFinishing()) {
+                                Glide.with(context).load(iconUrl).into(holder.weather_icon);
+                            }
+                        }
                         holder.temp.setText(temp + " °C");
                         holder.condition.setText(mainWeather);
                         Log.d("Weather", "City: " + city + ", Temp: " + temp + "°C" + jsonObject.toString());

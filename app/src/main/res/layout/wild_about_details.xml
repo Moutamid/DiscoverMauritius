@@ -893,6 +893,7 @@ Over 700 native species of flowering plant are found in Mauritius and nearly hal
 
         <RelativeLayout
             android:id="@+id/eatBtn"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="13dp"
@@ -920,6 +921,8 @@ Over 700 native species of flowering plant are found in Mauritius and nearly hal
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="6dp"
+            android:visibility="gone"
+
             android:background="#9F9F9F" />
 
         <RelativeLayout

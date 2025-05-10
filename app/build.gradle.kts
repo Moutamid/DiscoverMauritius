@@ -17,8 +17,8 @@ android {
         applicationId = "com.moutamid.sqlapp"
         minSdk = 26
         targetSdk = 34
-        versionCode = 10
-        versionName = "1.0.7"
+        versionCode = 12
+        versionName = "1.0.9"
         multiDexEnabled = true
         setProperty("archivesBaseName", "Discover Mauritius-$versionName")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
