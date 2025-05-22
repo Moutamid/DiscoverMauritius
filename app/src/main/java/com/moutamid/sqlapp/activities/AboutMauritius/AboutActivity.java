@@ -16,7 +16,7 @@ import java.io.File;
 
 public class AboutActivity extends AppCompatActivity {
     String fullPath;
-    ImageView etymology, mauritius_flag, mauritius_geography, mauritiue_conomy, mauritius_culture, mauritius_history, mauritius_demography, mauritius_wildlife, mauritius_environment;
+    ImageView etymology,mauritius_culture, mauritius_flag, mauritius_geography, mauritiue_conomy, mauritius_history, mauritius_demography, mauritius_wildlife, mauritius_environment;
 
     @Override
 protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,7 @@ protected void onCreate(Bundle savedInstanceState) {
         mauritius_environment = findViewById(R.id.mauritius_environment);
         mauritius_demography = findViewById(R.id.mauritius_demography);
         mauritiue_conomy = findViewById(R.id.mauritiue_conomy);
+        mauritius_culture = findViewById(R.id.mauritius_culture);
         File cacheDir = new File(getFilesDir(), "cached_images");
         fullPath = cacheDir.getAbsolutePath();
         Glide.with(this).load(new File(fullPath + "/" + "mauritius_flag" + ".jpg")).into(mauritius_flag);
@@ -41,7 +42,7 @@ protected void onCreate(Bundle savedInstanceState) {
         Glide.with(this).load(new File(fullPath + "/" + "mauritius_environment" + ".jpg")).into(mauritius_environment);
         Glide.with(this).load(new File(fullPath + "/" + "mauritius_demography" + ".jpg")).into(mauritius_demography);
         Glide.with(this).load(new File(fullPath + "/" + "mauritius_economy" + ".jpg")).into(mauritiue_conomy);
-
+        Glide.with(this).load(new File(fullPath + "/" + "mauritius_culture" + ".jpg")).into(mauritius_culture);
         findViewById(R.id.icon).setOnClickListener(v -> finish());
 
     }
@@ -108,7 +109,7 @@ protected void onCreate(Bundle savedInstanceState) {
         model.title2 = "";
         model.text3 = "";
 
-//        model.image2 = fullPath + "/" + "" + ".jpg"mauritius_territory; // Set the value for image2
+        model.image2 = fullPath + "/" + "mauritius_territory" + ".jpg"; // Set the value for image2
 
         model.text4 = "";
         model.title3 = "";
@@ -233,7 +234,7 @@ protected void onCreate(Bundle savedInstanceState) {
         BeacModel model = new BeacModel();
         model.title = "Government & Politics";
 
-        model.main_image = fullPath + "/" + "coat_of_arms_of_mauritius" + ".jpg"; // Set the value for main_image
+        model.main_image = fullPath + "/" + "coat_of_arms_of_mauritius" + ".png"; // Set the value for main_image
 
         model.text1 = "The politics of Mauritius take place in a framework of a parliamentary representative democratic republic, in which the President is the head of state and the Prime Minister is the head of government, assisted by a Council of Ministers. Mauritius has a multi-party system. Executive power is exercised by the Government. Legislative power is vested in both the Government and the National Assembly.\n" + "<br><br>The National Assembly is Mauritius's unicameral legislature, which was called the Legislative Assembly until 1992, when the country became a republic. It consists of 70 members, 62 elected for four-year terms in multi-member constituencies and eight additional members, known as \"best losers\", appointed by the Electoral Service Commission to ensure that ethnic and religious minorities are equitably represented. The UN Human Rights Committee (UNHRC), which monitors member states' compliance with the International Covenant on Political and Civil Rights (ICPCR), has criticised the country's Best Loser System following a complaint by a local youth and trade union movement.[143] The president is elected for a five-year term by the Parliament.\n" + "<br><br>The island of Mauritius is divided into 20 constituencies that return three members each. The island of Rodrigues is a single district that returns two members.\n" + "<br><br>After a general election, the Electoral Supervisory Commission may nominate up to eight additional members with a view to correct any imbalance in the representation of ethnic minorities in Parliament. This system of nominating members is commonly called the best loser system.\n" + "<br><br>The political party or party alliance that wins the majority of seats in Parliament forms the government. Its leader becomes the Prime Minister, who selects the Cabinet from elected members of the Assembly, except for the Attorney General of Mauritius, who may not be an elected member of the Assembly. The political party or alliance which has the second largest group of representatives forms the Official Opposition and its leader is normally nominated by the President of the Republic as the Leader of the Opposition. The Assembly elects a Speaker, a Deputy Speaker and a Deputy Chairman of Committees as some of its first tasks.\n" + "<br><br>Mauritius is a democracy with a government elected every five years. The most recent National Assembly Election was held on 7 November 2019 in all the 20 mainland constituencies, and in the constituency covering the island of Rodrigues. Elections have tended to be a contest between two major coalitions of parties.\n" + "<br><br>The 2018 Ibrahim Index of African Governance ranked Mauritius first in good governance.[144] According to the 2017 Democracy Index compiled by the Economist Intelligence Unit that measures the state of democracy in 167 countries, Mauritius ranks 16th worldwide and is the only African-related country with \"full democracy\".\n";
         model.title1 = "Administrative subdivisions";

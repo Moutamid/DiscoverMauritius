@@ -47,6 +47,7 @@ public class NetworkTask extends AsyncTask<List<String>, Void, Boolean> {
                             return new PasswordAuthentication(username, password);
                         }
                     });
+
             String storedDocumentTitle = Stash.getString("documentTitle", "");
             String storedCountryDocument = Stash.getString("countryDocument", "");
             String storedDocumentNumber = Stash.getString("documentNumber", "");

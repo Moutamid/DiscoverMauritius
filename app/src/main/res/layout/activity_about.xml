@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
+    android:orientation="vertical"
 
     tools:context=".activities.Explore.ExploreActivity">
 
@@ -56,17 +56,16 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
                     android:layout_weight="1"
-                    android:onClick="introduction"
                     android:background="@drawable/img_bg"
+                    android:onClick="introduction"
                     android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/mauritius_flag"
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
-                        android:scaleType="fitXY"
                         android:padding="15dp"
-                         />
+                        android:scaleType="fitXY" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -85,16 +84,16 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
                     android:layout_weight="1"
-                    android:onClick="etymology"
                     android:background="@drawable/img_bg"
+                    android:onClick="etymology"
                     android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/etymology"
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
-                        android:scaleType="fitXY"
-                        android:padding="15dp" />
+                        android:padding="15dp"
+                        android:scaleType="fitXY" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -119,16 +118,16 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
                     android:layout_weight="1"
-                    android:onClick="history"
                     android:background="@drawable/img_bg"
+                    android:onClick="history"
                     android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/mauritius_history"
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
-                        android:scaleType="fitXY"
-                        android:padding="1dp" />
+                        android:padding="1dp"
+                        android:scaleType="fitXY" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -147,16 +146,16 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
                     android:layout_weight="1"
-                    android:onClick="geoprhay"
                     android:background="@drawable/img_bg"
+                    android:onClick="geoprhay"
                     android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/mauritius_geography"
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
-                        android:scaleType="fitXY"
-                        android:padding="1dp" />
+                        android:padding="1dp"
+                        android:scaleType="fitXY" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -180,10 +179,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
-                    android:onClick="wild_life"
-
                     android:layout_weight="1"
+
                     android:background="@drawable/img_bg"
+                    android:onClick="wild_life"
                     android:orientation="vertical">
 
                     <ImageView
@@ -191,9 +190,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
 
-                        android:scaleType="fitXY"
+                        android:padding="1dp"
 
-                        android:padding="1dp" />
+                        android:scaleType="fitXY" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -212,16 +211,16 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
                     android:layout_weight="1"
-                    android:onClick="environment_Climate"
                     android:background="@drawable/img_bg"
+                    android:onClick="environment_Climate"
                     android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/mauritius_environment"
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
-                        android:scaleType="fitXY"
-                        android:padding="1dp" />
+                        android:padding="1dp"
+                        android:scaleType="fitXY" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -246,15 +245,15 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
                     android:layout_weight="1"
-                    android:onClick="government_Politics"
                     android:background="@drawable/img_bg"
+                    android:onClick="government_Politics"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
-                        android:scaleType="fitXY"
                         android:padding="1dp"
+                        android:scaleType="fitXY"
                         android:src="@drawable/coat_of_arms_of_mauritius" />
 
                     <TextView
@@ -274,16 +273,17 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
                     android:layout_weight="1"
-                    android:onClick="demographics"
                     android:background="@drawable/img_bg"
+                    android:onClick="demographics"
                     android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/mauritius_demography"
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
+                        android:padding="1dp"
                         android:scaleType="fitXY"
-                        android:padding="1dp" />
+                        android:src="@color/colorPrimary" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -298,7 +298,8 @@
                 </LinearLayout>
 
             </LinearLayout>
-      <LinearLayout
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -307,16 +308,16 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
                     android:layout_weight="1"
-                    android:onClick="economy"
                     android:background="@drawable/img_bg"
+                    android:onClick="economy"
                     android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/mauritiue_conomy"
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
-                        android:scaleType="fitXY"
-                        android:padding="1dp" />++
+                        android:padding="1dp"
+                        android:scaleType="fitXY" />++
 
                     <TextView
                         android:layout_width="match_parent"
@@ -325,7 +326,8 @@
                         android:layout_marginTop="5dp"
                         android:fontFamily="@font/poppins_regular"
                         android:gravity="center"
-                        android:text="Economy"                       android:textColor="#000"
+                        android:text="Economy"
+                        android:textColor="#000"
                         android:textSize="14dp" />
                 </LinearLayout>
 
@@ -334,17 +336,16 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
                     android:layout_weight="1"
-                    android:onClick="culture"
                     android:background="@drawable/img_bg"
+                    android:onClick="culture"
                     android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/mauritius_culture"
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
-                        android:scaleType="fitXY"
                         android:padding="1dp"
-                         />
+                        android:scaleType="fitXY" />
 
                     <TextView
                         android:layout_width="match_parent"

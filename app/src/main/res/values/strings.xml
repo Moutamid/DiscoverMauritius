@@ -5,13 +5,11 @@
     <string name="d_mm_yyyy"><font color="#808080">D-MM-YYYY</font></string>
     <string name="_mm_yyyy"><font color="#808080">-MM-YYYY</font></string>
     <string name="m_yyyy"><font color="#808080">M-YYYY</font></string>
-
     <string name="_yyyy"><font color="#808080">-YYYY</font></string>
     <string name="yyyy"><font color="#808080">YYYY</font></string>
     <string name="yyy"><font color="#808080">YYY</font></string>
     <string name="yy"><font color="#808080">YY</font></string>
     <string name="y"><font color="#808080">Y</font></string>
-<!--    <string name=""></string>-->
     <string name="facebook_app_id">1630376881133406</string>
     <string name="facebook_client_token">682f8eb28e43da7de8b00c10e5723e93</string>
     <string name="privacy_url">https://www.getyourguide.co.uk/mauritius-l2105/</string>
