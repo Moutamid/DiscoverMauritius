@@ -12,13 +12,13 @@ plugins {
 
 android {
     namespace = "com.moutamid.sqlapp"
-    compileSdk = 34
+    compileSdk = 35
     defaultConfig {
         applicationId = "com.moutamid.sqlapp"
         minSdk = 26
-        targetSdk = 34
-        versionCode = 12
-        versionName = "1.0.9"
+        targetSdk = 35
+        versionCode = 14
+        versionName = "1.0.11"
         multiDexEnabled = true
         setProperty("archivesBaseName", "Discover Mauritius-$versionName")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
